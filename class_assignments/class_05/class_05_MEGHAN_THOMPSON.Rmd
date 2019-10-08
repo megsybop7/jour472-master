@@ -89,7 +89,10 @@ Here's the data we'll be using, all in the data folder
 
 ```{r}
 
-
+buyer_addresses<- read_csv("data/buyer_addresses.csv")
+buyer_annual<- read_csv("data/buyer_annual_by_year.csv")
+buyer_totals <- read_csv("data/buyer_totals.csv")
+state_population <- read_csv("data/state_population_per_year.csv")
 
 ```
 
@@ -97,15 +100,66 @@ Here's the data we'll be using, all in the data folder
 
 Now that the data is in, spend some time examining it to get a sense of it using the functions we reviewed previously. These data checks should be routine for you at this point. What information does it contain? What is missing? Are values stored in strange formats?
 
+```{r}
+
+glimpse(buyer_addresses)
+glimpse(buyer_annual)
+glimpse(buyer_totals)
+glimpse(state_population)
+
+
+```
+
 **Task** Answer the following question in a comment in a code block below.  Look at the data.  The three data sets describe similar things -- buyers -- but have different numbers of records? What's your best guess for why the number of records buyer_annual_by_year is higher than buyer_totals?  What about your best guess for why buyer_addresses is higher than buyer_totals?  
+
+```{r}
+
+## Buyer_annual_by_year breaks down the dosage_units by each year while buyer_totals adds up all the pills sent to that buyer between 2006 and 2012. Buyer address is bigger because there could be multiple physical locations of a pharmacy even if they're all owned by the same person. 
+
+```
 
 ## Analysis
 
 **Task**: What is the name and location of the pharmacy that had the most pills sent to it in total? Do some web research and offer your best guess, which you could use as a jumping off point for further reporting, as to why this pharmacy might have so many.
 
-**Task**: What is the name of the practitioner in Maryland that had the most totals pills **in 2010**? How many total pills did the doctor have, compared to the next highest doctor in the state that year? Use the Maryland state physician board lookup tool to find any disciplinary actions taken against this doctor: https://www.mbp.state.md.us/bpqapp/. Do a brief writeup of what you find.  Also answer this question: how would ensure that the doctor you find on the state board lookup tool is the same doctor described in this data.  
+```{r}
 
+most_pills_total<- buyer_addresses%>%
+  inner_join(buyer_totals, by="buyer_dea_no")%>%
+  arrange(desc(total_pills))%>%
+  view(most_pills_total)
+
+
+## The pharmacy with the most pills is VA oupatient distribution center where prescriptions are fulfilled and delivered to veterans. 
+  
+```
+
+**Task**: What is the name of the practitioner in Maryland that had the most totals pills **in 2010**? How many total pills did the doctor have, compared to the next highest doctor in the state that year? Use the Maryland state physician board lookup tool to find any disciplinary actions taken against this doctor: https://www.mbp.state.md.us/bpqapp/. Do a brief writeup of what you find.  Also answer this question: how would ensure that the doctor you find on the state board lookup tool is the same doctor described in this data.  
+```{r}
+
+most_pills_maryland<- buyer_addresses%>%
+  inner_join(buyer_totals, by="buyer_dea_no")%>%
+  arrange(desc(total_pills))%>%
+  filter(buyer_state.x=="MD", buyer_bus_act.y=="PRACTITIONER")
+view(most_pills_maryland)
+
+## Rakesh Mathur was the practitioner who distributed the most pills. His license has been put on probation. 
+
+```
 **Task**: Which state had the highest rate of total pills per person sent to it over the 2006 to 2012 period?
+
+```{r}
+
+buyer_totals %>%
+  group_by(buyer_state)%>%
+  summarise(total_pills=sum(total_pills))%>%
+  inner_join(state_population, by="buyer_state")%>%
+  mutate(pills_per_person=total_pills/population_average)%>%
+  arrange(desc(pills_per_person))
+
+##West Virginia had the most pills per person with 464 pills per person between 2006 and 2012. 
+
+```
 
 **Task**: Are there any buyers included in the buyer_totals table that ARE NOT included in the buyer_addresses table?  Write code in the codeblock below that will help you figure out the answer to this question. Write comments that explain what you're doing. 
 
@@ -116,7 +170,42 @@ Here's how I'd proceed, in order:
 3.  Now, do a left join of buyer_totals to buyer_addresses.  But this time, add a filter so you only get back records where the buyer_address1 field has missing values (na).  You can use the is.na() function inside of a filter, like so: is.na(buyer_address1).  How many records are returned.  Think through the logic: what does it mean that 0 rows are returned when you do this? 
 4.  Lastly, try using a type of join I alluded to in the video, but didn't explicitly show you: [anti_join](https://dplyr.tidyverse.org/reference/join.html).  This method return all rows from the buyer_totals table where there is not a matching value in the buyer_addresses table.  It's a tidier way of doing the thing we just did in the last query.  Think through the logic: what does it mean that 0 rows are returned when you do this?
 
+```{r}
+
+buyer_totals%>%
+  inner_join(buyer_addresses, by="buyer_dea_no")
+
+buyer_totals%>%
+  left_join(buyer_addresses, by="buyer_dea_no")%>%
+  filter(is.na(buyer_address1))
+
+anti_join(buyer_totals, buyer_addresses, by="buyer_dea_no")
+
+##It means there are no rows in the buyer_totals table where there is not a matching value in the buyer_addresses. Meaning, for each buyer whose address is listed, the total number of the pills they purchased are accounted for. 
+  
+
+```
+
 **Task**: Are there any buyers included in the buyer_addresses table that ARE NOT included in the buyer_totals table?  Write code in the codeblock below that will help you figure out the answer to this question. Write comments that explain what you're doing that think through the logic. You can use similar methods as in the last question to solve the problem. 
+
+```{r}
+
+buyer_addresses%>%
+  inner_join(buyer_totals, by="buyer_dea_no")
+
+buyer_addresses%>%
+  left_join(buyer_totals, by="buyer_dea_no")
+
+buyer_addresses%>%
+  right_join(buyer_totals)
+
+buyer_addresses%>%
+  anti_join(buyer_totals)
+
+## There are 129,925 addresses that do not have matches for buyer_totals. This is likely because buyer_totals is a culmination of all purchases by a single pharmacy even if they are located in different physical places. 
+
+
+```
 
 ## Your own questions
 
@@ -125,6 +214,20 @@ Here's how I'd proceed, in order:
 Use the rest of this lab as an opportunity to explore this national slice of buyer data with an eye to trying to identify trends, examples and other interesting facts that you might want to dig deeper on later in the semester.  
 
 Create and answer at least four codeblocks, using any of the techniques we've learned in this class up to this point.  You can also load in additional data if you like. 
+
+```{r}
+
+buyer_addresses%>%
+  inner_join(buyer_totals)%>%
+  group_by(buyer_dea_no)%>%
+  arrange(desc(total_pills))%>%
+  filter(buyer_state=="MD")
+
+## The most pills purchased in Maryland in the year 2008 were by Drug City Pharmacy in Baltimore. 
+
+
+
+```
 
 ## Output
 
