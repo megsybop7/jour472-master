@@ -24,7 +24,7 @@ The purpose of this in-class assignment is to build on the information you learn
 * Store changes on GitHub.
 * Learn how to join together two related data sets on a common field to perform a new kind of analysis, and discuss common problems that arise when doing joins.  
  
-## Tasks, Turning it In, Getting Help
+## Tasks, Turning it In, Getting Help 
 
 At several points throughout this document, you will see the word **Task**.  
 
