@@ -173,6 +173,13 @@ harford_pharmacies%>%
 
 ```{r}
 
+harford_raw <- county_raw(county="Harford", state="MD", key=key)
+
+```
+
+
+```{r}
+
 harford_raw %>%
   group_by(Combined_Labeler_Name, REPORTER_NAME, BUYER_NAME)%>%
   summarise(total_pills = sum(DOSAGE_UNIT))%>%
