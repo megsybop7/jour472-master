@@ -458,7 +458,7 @@ pills_population_county <- pills_population %>%
 
 
 geo_pills_population_county <- county_geodata_shifted %>%
- inner_join(pills_population_county, by=c("GEOID" = "countyfips"))
+ inner_join(pills_population_county, by=c("GEOID" = "coxuntyfips"))
 
 mapview(geo_pills_population_county, zcol = "pills_per_person", legend = TRUE)
 
