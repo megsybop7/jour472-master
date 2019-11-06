@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
-############ Which packages will I need for this program? 
+# Which packages will I need for this program? 
 
 library(tidyverse)
 library(tidycensus)
@@ -23,62 +23,105 @@ library(stringr)
 ```
 
 ```{r}
-
-############# What keys will I need for this program? 
-
-#KEYS
+# What keys will I need for this program? 
+# KEYS
 census_api_key("6807e6be8b6aeed023ebd2791acda76a66b32754")
 arcos_key <- "aoQ1LGl"
 
-############# How do you locate variables in the ACS data? 
+```
 
+```{r}
+
+# How do you locate variables in the ACS data? 
 #CENSUS DATA VARIABLES 
 acs_variables <- load_variables(2012, "acs5", cache = TRUE)
 
-############ What is the county geodata?
+# The answer is there is no easy way to find variables in the ACS data. Search around online or use trial and error. There's your answer, Meghan. 
 
+```
+
+```{r}
+
+# What is the county geodata?
 #GEODATA OF COUNTIES 
 county_geodata_shifted <- get_acs(geography = "county",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
 
-########### What is the state geodata? 
+# The county geodata stores the geographic location of the county for mapping and visualization. 
+
+```
+
+```{r}
+
+# What is the state geodata? 
 #GEODATA OF STATES 
 state_geodata_shifted <- get_acs(geography = "state",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
 
-############ What is the median household income in each county across the United States? 
+```
+
+```{r}
+
+# What is the median household income in each county across the United States? 
+
 #MEDIAN HOUSEHOLD INCOME IN COUNTIES ACROSS U.S. 
-county_median_household_income <- get_acs(geography = "county", variables = c("B19013_001"), survey="acs5", year = 2012)
-view(county_median_household_income)
+nat_counties_median_income <- get_acs(geography = "county", variables = c("B19013_001"), survey="acs5", year = 2012)
 
-
-############# What is the median household income in each county in Maryland? 
-#MARYLAND COUNTIES MEDIAN HOUSEHOLD INCOME 
-maryland_median_incomes_county <- county_median_household_income %>%
-  filter(str_detect(NAME, "Maryland"))
-
-
-############## What is the median household income in each state? 
-#STATES MEDIAN HOUSEHOLD INCOME 
-state_income <- get_acs(geography = "state", variables = "B19013_001")
-
-############### Which county in Maryland received the most pills per person between 2006 and 2012? 
-total_maryland_county_pills_2012 <- maryland_counties_pills_per_year %>%
-  summarise(total_pills = sum(DOSAGE_UNIT))
+# Obviously I can't list the median income for each county in the entire country, but I did organize it into this neat little chart. 
 
 ```
 
 
 ```{r}
 
-############# Who received most pills relative to the median income? 
-maryland_median_incomes_county <- maryland_median_incomes_county %>%
-  filter(NAME !="Baltimore city, Maryland")
+#What is the median household income in each county in Maryland? 
 
-total_maryland_county_pills_2012 <- total_maryland_county_pills_2012 %>%
-  filter(BUYER_COUNTY != "BALTIMORE CITY")
+# MARYLAND COUNTIES MEDIAN HOUSEHOLD INCOME 
+MD_C_median_income <- nat_counties_median_income %>%
+  filter(str_detect(NAME, "Maryland"))
 
-baltimore_city <- summarized_county_annual(county = "Baltimore City", state = "MD", key = arcos_key)
+# Answers are stored in this little chart. 
+```
+
+```{r}
+
+# Which state has the highest median income?
+
+#STATES MEDIAN HOUSEHOLD INCOME 
+state_median_income <- get_acs(geography = "state", variables = "B19013_001", year = 2012) %>%
+  arrange(desc(estimate))
+
+# Maryland has the highest median income. 
+```
+
+```{r}
+
+# Which county in Maryland received the most pills per person between 2006 and 2012? 
+
+summarized_county_annual(state="MD", key = arcos_key) %>%
+  group_by(BUYER_COUNTY) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT))
+
+# Baltimore County received the most pills per person between 2006 and 2012. 
+```
+
+```{r}
+
+# Which county in the United States received the most pills total between 2006 and 2012?
+
+county_raw(key = arcos_key)
+
+```
+
+
+```{r}
+
+# How do I build a chart that contains both the median income and the pills received? 
+
+MD_C_annual_pills <- summarized_county_annual(state="MD", key=arcos_key) 
+
+
 
 ############# How do I add Baltimore City back in? 
 income_per_county <- bind_cols(maryland_median_incomes_county, total_maryland_county_pills_2012) %>%
@@ -93,10 +136,10 @@ income_per_county <- bind_cols(maryland_median_incomes_county, total_maryland_co
 income_per_county %>%
   arrange(desc(estimate))
 
-
 income_per_county %>%
   arrange(desc(total_pills))
 
+rm(baltimore_city)
 ########### What does a bar graph of this look like? 
 ggplot(income_per_county) + 
   geom_bar(stat="identity", aes(estimate, total_pills, fill= BUYER_COUNTY, width = 800)) +
