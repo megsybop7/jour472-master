@@ -210,3 +210,24 @@ state_abb <- state.abb
 # I still need help on this. 
 
 ```
+
+```{r}
+
+# Table on pill totals relative to median income. 
+
+NAT_C_MED_INCOME <- nat_counties_median_income
+rm(nat_counties_median_income)
+
+NAT_C_PILLS <- nat_counties_pills
+rm(nat_counties_pills)
+
+STATE_MED_INCOME <- state_median_income
+rm(state_median_income)
+
+STATE_PILL_TOTALS <- state_pill_totals
+rm(state_pill_totals)
+
+rm(total_maryland_county_pills_2012)
+
+rm(state.abb)
+```
