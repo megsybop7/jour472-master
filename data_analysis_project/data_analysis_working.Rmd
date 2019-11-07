@@ -20,10 +20,12 @@ library(scales)
 library(arcos)
 library(stringr)
 
+
 ```
 
 ```{r}
-# What keys will I need for this program? 
+
+# 1. What keys will I need for this program? 
 # KEYS
 census_api_key("6807e6be8b6aeed023ebd2791acda76a66b32754")
 arcos_key <- "aoQ1LGl"
@@ -32,7 +34,7 @@ arcos_key <- "aoQ1LGl"
 
 ```{r}
 
-# How do you locate variables in the ACS data? 
+# 2. How do you locate variables in the ACS data? 
 #CENSUS DATA VARIABLES 
 acs_variables <- load_variables(2012, "acs5", cache = TRUE)
 
@@ -42,7 +44,7 @@ acs_variables <- load_variables(2012, "acs5", cache = TRUE)
 
 ```{r}
 
-# What is the county geodata?
+# 3. What is the county geodata?
 #GEODATA OF COUNTIES 
 county_geodata_shifted <- get_acs(geography = "county",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
@@ -53,7 +55,7 @@ county_geodata_shifted <- get_acs(geography = "county",
 
 ```{r}
 
-# What is the state geodata? 
+# 4. What is the state geodata? 
 #GEODATA OF STATES 
 state_geodata_shifted <- get_acs(geography = "state",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
@@ -62,7 +64,7 @@ state_geodata_shifted <- get_acs(geography = "state",
 
 ```{r}
 
-# What is the median household income in each county across the United States? 
+# 5. What is the median household income in each county across the United States? 
 
 #MEDIAN HOUSEHOLD INCOME IN COUNTIES ACROSS U.S. 
 nat_counties_median_income <- get_acs(geography = "county", variables = c("B19013_001"), survey="acs5", year = 2012)
@@ -74,7 +76,7 @@ nat_counties_median_income <- get_acs(geography = "county", variables = c("B1901
 
 ```{r}
 
-#What is the median household income in each county in Maryland? 
+# 6.What is the median household income in each county in Maryland? 
 
 # MARYLAND COUNTIES MEDIAN HOUSEHOLD INCOME 
 MD_C_median_income <- nat_counties_median_income %>%
@@ -85,7 +87,7 @@ MD_C_median_income <- nat_counties_median_income %>%
 
 ```{r}
 
-# Which state has the highest median income?
+# 7. Which state has the highest median income?
 
 #STATES MEDIAN HOUSEHOLD INCOME 
 state_median_income <- get_acs(geography = "state", variables = "B19013_001", year = 2012) %>%
@@ -96,7 +98,7 @@ state_median_income <- get_acs(geography = "state", variables = "B19013_001", ye
 
 ```{r}
 
-# Which county in Maryland received the most pills per person between 2006 and 2012? 
+# 8. Which county in Maryland received the most pills per person between 2006 and 2012? 
 
 summarized_county_annual(state="MD", key = arcos_key) %>%
   group_by(BUYER_COUNTY) %>%
@@ -108,43 +110,103 @@ summarized_county_annual(state="MD", key = arcos_key) %>%
 
 ```{r}
 
-# Which county in the United States received the most pills total between 2006 and 2012?
+# 9. What was the median income in Baltimore between 2006 and 2012? 
 
-county_raw(key = arcos_key)
+nat_counties_median_income %>%
+  filter(NAME == "Baltimore city, Maryland")
 
+# Baltimore median income was $40,803. 
+
+```
+
+
+
+```{r}
+
+
+# 10. Which county in the United States received the most pills total between 2006 and 2012?
+
+nat_counties_pills <- summarized_county_annual(key = arcos_key) 
+
+nat_counties_pills <- nat_counties_pills %>%
+  group_by(BUYER_COUNTY, BUYER_STATE) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT))
+
+# Los Angeles received the most pills total between 2006 and 2012. 
+
+```
+
+```{r}
+
+# 11. What was the median income of Los Angeles County in the latest ACS survey? 
+
+nat_counties_median_income %>%
+  filter(NAME == "Los Angeles County, California") 
+
+# The average income was 52,241. 
 ```
 
 
 ```{r}
 
-# How do I build a chart that contains both the median income and the pills received? 
+# 12. What county in the U.S. has the highest median income? 
 
-MD_C_annual_pills <- summarized_county_annual(state="MD", key=arcos_key) 
+nat_counties_median_income %>% arrange(desc(estimate))
 
+# Falls Church City, Virginia has the highest median income of any county in the country at $122,844.
 
-
-############# How do I add Baltimore City back in? 
-income_per_county <- bind_cols(maryland_median_incomes_county, total_maryland_county_pills_2012) %>%
-  select(GEOID, BUYER_COUNTY, estimate, total_pills) %>%
-  add_row(GEOID = 24510, BUYER_COUNTY = "BALTIMORE CITY", estimate = 40803, total_pills = 20673130)
 ```
 
 ```{r}
 
-########### Which county has the highest median income? 
+# 13. What county in the U.S. has the lowest median income? 
 
-income_per_county %>%
-  arrange(desc(estimate))
+nat_counties_median_income %>% arrange(desc(estimate)) %>%
+  filter(!str_detect(NAME, "Puerto Rico")) %>%
+  arrange(estimate)
 
-income_per_county %>%
-  arrange(desc(total_pills))
-
-rm(baltimore_city)
-########### What does a bar graph of this look like? 
-ggplot(income_per_county) + 
-  geom_bar(stat="identity", aes(estimate, total_pills, fill= BUYER_COUNTY, width = 800)) +
-  scale_y_continuous(labels=comma)  + scale_x_continuous(labels=comma)
-
+# Owsley County, Kentucky has the lowest median income of any county in the U.S. with a median incoem of $19,624. 
 
 ```
 
+```{r}
+
+# 14. Which state in the U.S. has the lowest median income? 
+
+state_median_income %>% arrange(estimate)
+
+# Mississippi has the lowest median income at 38,882. 
+```
+
+```{r}
+
+# 15. How do I make a table that contains each states median income and pills received? 
+
+state_pill_totals <- nat_counties_pills %>%
+  group_by(BUYER_STATE) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  filter(!str_detect(BUYER_STATE, "GU"))%>%
+  filter(!str_detect(BUYER_STATE, "VI"))%>%
+  filter(!str_detect(BUYER_STATE, "PR"))%>%
+  filter(!str_detect(BUYER_STATE, "MP"))%>%
+  filter(!str_detect(BUYER_STATE, "DC"))%>%
+  filter(!str_detect(BUYER_STATE, "PW"))%>%
+  filter(!str_detect(BUYER_STATE, "AE"))%>%
+  mutate(state_names = state_names)
+
+state_median_income <- state_median_income %>%
+  filter(!str_detect(NAME, "Puerto Rico")) %>%
+  filter(!str_detect(NAME, "District of Columbia")) %>%
+  arrange(NAME)%>%
+  mutate(state_abb = state_abb)%>%
+  arrange(state_abb)%>%
+  select(-state_names, -state_abb)
+
+state_names <- state.name
+state_abb <- state.abb
+
+  
+# I still need help on this. 
+
+```
