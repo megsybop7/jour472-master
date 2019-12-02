@@ -276,17 +276,86 @@ NAT_COMBINED <- NAT_COMBINED %>%
 
 #! 22) How do I combined everything so I can graph by states?
 
+## I have to make sure every table with a state abbreviation has a state name attached as well. 
   
 STATE_COMBINED <- NAT_COMBINED %>%
-  select(BUYER_STATE, value, med_income, GEOID, pills_per_person) 
+  select(BUYER_STATE, value, med_income, GEOID, pills_per_person, DOSAGE_UNIT, pills_per_person)
 
-left_join(STATE_COMBINED, state_names, by = c("BUYER_STATE" = "abb"))
+STATE_COMBINED <- left_join(STATE_COMBINED, state_names, by = c("BUYER_STATE" = "abb"))
 
 state_names <- tibble(state = state.name) %>%
    bind_cols(tibble(abb = state.abb)) %>% 
    bind_rows(tibble(state = "District of Columbia", abb = "DC"))
 
+STATE_POP <- state_population(key = arcos_key) %>%
+  filter(year == 2012)
 
+
+STATE_COMBINED <- STATE_COMBINED %>% 
+  select(BUYER_COUNTY, BUYER_STATE, state, pills_per_person, DOSAGE_UNIT)%>%
+  inner_join(STATE_POP, by = "BUYER_STATE") %>%
+  inner_join(STATE_MED_INCOME, by = c("state" = "NAME"))
+
+STATE_COMBINED <- STATE_COMBINED %>%
+  group_by(BUYER_STATE, state, GEOID, estimate, population) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / population) %>%
+  arrange(desc(pills_per_person))
+
+#! 23) Which state had the most pills per person overall between 2006 and 2012? 
+
+## West Virginia,  between 2006 and 2012, could give 461 pills to each person in their state. 
+
+#! 24) What was the median income of West Virginia, in 2012? 
+
+## 40,400 
+
+#! 25) Which state had the least pills per person overall between 2006 and 2012? 
+
+summary(STATE_COMBINED)
+
+## North Dakota only had enough pills between 2006 and 2012 to give 132 to each person. 
+
+#! 26) What was the median income of North Dakota in 2012? 
+
+## 51,641
+
+
+```
+
+```{r}
+
+#! 27) Now graph the states relationship between median income and pills per person. 
+
+ggplot(STATE_COMBINED) + 
+  geom_point(aes(estimate, pills_per_person)) +
+  labs(x="Median Income", y = "Pills Per Person") + 
+  geom_text_repel(aes(estimate, pills_per_person, label= BUYER_STATE)) +
+   geom_smooth(aes(estimate, pills_per_person), method= 'lm', se = FALSE)
+
+#! 28) Is there a relationship between median income and pills per person? 
+
+## Yes, there is an obvious negative correlation between median income and pills per person. As median income increases, so does the pills per person a state can offer. 
+
+!# 29) Which relationship between income and pills per person is stronger, national or in Maryland? 
+  
+## The relationship between income and pills is stronger at the national level. 
+  
+!# 30) Why might the relationship between median income and pills per person be weaker in Maryland than at the national level? 
+  
+## Maryland has the highest median income in the country and many of our residents are considered wealthy relative to the rest of the country. However, in Maryland, even the wealthy are abusing opiates, like in Harford and Calvert county where there is a greater number of pills per person at higher incomes. 
+
+```
+
+```{r}
+
+# Map out income vs. pills per person at state and national level. 
+
+# Visualize relationship between proximity to Baltimore City and pills per person. 
+
+# Visualize how pharmacies are targeting areas of lower income in the U.S. compared to in Maryland. 
+
+# Establish correlation between income and pills per person. 
 
 
 ```
