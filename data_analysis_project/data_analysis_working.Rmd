@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
-# Which packages will I need for this program? 
+#! 1) Which packages will I need for this program? 
 
 library(tidyverse)
 library(tidycensus)
@@ -19,44 +19,31 @@ library(ggthemes)
 library(scales)
 library(arcos)
 library(stringr)
+library(ggrepel)
 
 
-```
-
-```{r}
-
-# 1. What keys will I need for this program? 
 # KEYS
 census_api_key("6807e6be8b6aeed023ebd2791acda76a66b32754")
 arcos_key <- "aoQ1LGl"
 
-```
-
-```{r}
-
-# 2. How do you locate variables in the ACS data? 
-#CENSUS DATA VARIABLES 
+# CENSUS DATA VARIABLES 
+ 
 acs_variables <- load_variables(2012, "acs5", cache = TRUE)
 
-# The answer is there is no easy way to find variables in the ACS data. Search around online or use trial and error. There's your answer, Meghan. 
+options(scipen=999)
+
 
 ```
 
 ```{r}
 
-# 3. What is the county geodata?
-#GEODATA OF COUNTIES 
+#! 2) What geodata will I need for this program? 
+
+# COUNTY GEODATA 
 county_geodata_shifted <- get_acs(geography = "county",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
 
-# The county geodata stores the geographic location of the county for mapping and visualization. 
-
-```
-
-```{r}
-
-# 4. What is the state geodata? 
-#GEODATA OF STATES 
+# STATE GEODATA 
 state_geodata_shifted <- get_acs(geography = "state",
               variables = "B01001_001", geometry = TRUE, shift_geo = TRUE)
 
@@ -64,44 +51,35 @@ state_geodata_shifted <- get_acs(geography = "state",
 
 ```{r}
 
-# 5. What is the median household income in each county across the United States? 
+#! 3) How do I find the median incomes for all counties across the U.S. and more specifically, Maryland? 
 
 #MEDIAN HOUSEHOLD INCOME IN COUNTIES ACROSS U.S. 
-nat_counties_median_income <- get_acs(geography = "county", variables = c("B19013_001"), survey="acs5", year = 2012)
-
-# Obviously I can't list the median income for each county in the entire country, but I did organize it into this neat little chart. 
-
-```
-
-
-```{r}
-
-# 6.What is the median household income in each county in Maryland? 
+NAT_C_MED_INCOME <- get_acs(geography = "county", variables = c("B19013_001"), survey="acs5", year = 2012)
 
 # MARYLAND COUNTIES MEDIAN HOUSEHOLD INCOME 
-MD_C_median_income <- nat_counties_median_income %>%
+MD_C_median_income <- NAT_C_MED_INCOME %>%
   filter(str_detect(NAME, "Maryland"))
 
-# Answers are stored in this little chart. 
 ```
 
 ```{r}
 
-# 7. Which state has the highest median income?
+#! 4) QUESTION:  Which state has the highest median income?
 
 #STATES MEDIAN HOUSEHOLD INCOME 
 state_median_income <- get_acs(geography = "state", variables = "B19013_001", year = 2012) %>%
   arrange(desc(estimate))
 
 # Maryland has the highest median income. 
+
 ```
 
 ```{r}
 
-# 8. Which county in Maryland received the most pills per person between 2006 and 2012? 
+#! 5) Which county in Maryland received the most pills per person between 2006 and 2012? 
 
-summarized_county_annual(state="MD", key = arcos_key) %>%
-  group_by(BUYER_COUNTY) %>%
+MD_C_combined_pills <- summarized_county_annual(state="MD", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
   summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
   arrange(desc(DOSAGE_UNIT))
 
@@ -110,7 +88,7 @@ summarized_county_annual(state="MD", key = arcos_key) %>%
 
 ```{r}
 
-# 9. What was the median income in Baltimore between 2006 and 2012? 
+# 6) What was the median income in Baltimore between 2006 and 2012? 
 
 nat_counties_median_income %>%
   filter(NAME == "Baltimore city, Maryland")
@@ -124,7 +102,7 @@ nat_counties_median_income %>%
 ```{r}
 
 
-# 10. Which county in the United States received the most pills total between 2006 and 2012?
+#! 7) Which county in the United States received the most pills total between 2006 and 2012?
 
 nat_counties_pills <- summarized_county_annual(key = arcos_key) 
 
@@ -139,7 +117,7 @@ nat_counties_pills <- nat_counties_pills %>%
 
 ```{r}
 
-# 11. What was the median income of Los Angeles County in the latest ACS survey? 
+#! 8)  What was the median income of Los Angeles County in the latest ACS survey? 
 
 nat_counties_median_income %>%
   filter(NAME == "Los Angeles County, California") 
@@ -150,7 +128,7 @@ nat_counties_median_income %>%
 
 ```{r}
 
-# 12. What county in the U.S. has the highest median income? 
+#! 9)  What county in the U.S. has the highest median income? 
 
 nat_counties_median_income %>% arrange(desc(estimate))
 
@@ -160,7 +138,7 @@ nat_counties_median_income %>% arrange(desc(estimate))
 
 ```{r}
 
-# 13. What county in the U.S. has the lowest median income? 
+#! 10) What county in the U.S. has the lowest median income? 
 
 nat_counties_median_income %>% arrange(desc(estimate)) %>%
   filter(!str_detect(NAME, "Puerto Rico")) %>%
@@ -172,62 +150,144 @@ nat_counties_median_income %>% arrange(desc(estimate)) %>%
 
 ```{r}
 
-# 14. Which state in the U.S. has the lowest median income? 
+#! 11) Which state in the U.S. has the lowest median income? 
 
-state_median_income %>% arrange(estimate)
+STATE_MED_INCOME %>% arrange(estimate)
 
 # Mississippi has the lowest median income at 38,882. 
 ```
 
 ```{r}
 
-# 15. How do I make a table that contains each states median income and pills received? 
+#! 12) Is there a trend between state median income and number of pills received in each MD county between 2006 and 2012? 
+# Pills relative to median income.  
 
-state_pill_totals <- nat_counties_pills %>%
-  group_by(BUYER_STATE) %>%
-  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
-  filter(!str_detect(BUYER_STATE, "GU"))%>%
-  filter(!str_detect(BUYER_STATE, "VI"))%>%
-  filter(!str_detect(BUYER_STATE, "PR"))%>%
-  filter(!str_detect(BUYER_STATE, "MP"))%>%
-  filter(!str_detect(BUYER_STATE, "DC"))%>%
-  filter(!str_detect(BUYER_STATE, "PW"))%>%
-  filter(!str_detect(BUYER_STATE, "AE"))%>%
-  mutate(state_names = state_names)
+MD_INCOME_PILLS <- inner_join(MD_C_median_income, MD_C_combined_pills, by = c("GEOID" = "countyfips"))
 
-state_median_income <- state_median_income %>%
-  filter(!str_detect(NAME, "Puerto Rico")) %>%
-  filter(!str_detect(NAME, "District of Columbia")) %>%
-  arrange(NAME)%>%
-  mutate(state_abb = state_abb)%>%
-  arrange(state_abb)%>%
-  select(-state_names, -state_abb)
+# LINE GRAPH MARYLAND MEDIAN INCOME RELATIVE TO PILLS SENT 
 
-state_names <- state.name
-state_abb <- state.abb
-
-  
-# I still need help on this. 
+ggplot(MD_INCOME_PILLS) + 
+  geom_point(aes(med_income, DOSAGE_UNIT)) +
+  labs(x="Median Income", y = "DOSAGE_UNIT") + 
+  geom_text_repel(aes(med_income, DOSAGE_UNIT, label=BUYER_COUNTY)) +
+   geom_smooth(aes(med_income, DOSAGE_UNIT), method= 'lm', se = FALSE)
 
 ```
 
 ```{r}
 
-# Table on pill totals relative to median income. 
+#! 13) How do I calculate pills per person and add that to my combined dataset?
 
-NAT_C_MED_INCOME <- nat_counties_median_income
-rm(nat_counties_median_income)
+#BUILDING TABLE TO INCLUDE PILLS PER PERSON 
 
-NAT_C_PILLS <- nat_counties_pills
-rm(nat_counties_pills)
+MD_COUNTY_POP <- NAT_COUNTY_POP %>%
+  filter(str_detect(NAME, "Maryland"), variable == "POP") 
 
-STATE_MED_INCOME <- state_median_income
-rm(state_median_income)
+MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
+  right_join(MD_COUNTY_POP, by = "GEOID") %>%
+  select(GEOID, BUYER_COUNTY, estimate, DOSAGE_UNIT, value)
 
-STATE_PILL_TOTALS <- state_pill_totals
-rm(state_pill_totals)
+MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
+  rename(population = value)
 
-rm(total_maryland_county_pills_2012)
+MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
+  rename(med_income = estimate)
 
-rm(state.abb)
+MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
+  mutate(pills_per_person = DOSAGE_UNIT / population)
+
+#! 14) Which county in Maryland distributed the most pills per person between 2006 and 2012?  
+
+# Kent County 
+
+#! 15) What is the median household income of Kent County? 
+ 
+# $54,614
+
+
 ```
+
+```{r}
+
+#! 16) Is there a trend between county median income and the number of pills distributed per person between 2006-2012? 
+
+# LINE PLOT COMPARING MED INCOME VS. PILLS PER PERSON TOTAL BETWEEN 2006-2012
+
+ggplot(MD_INCOME_PILLS) + 
+  geom_point(aes(med_income, pills_per_pop)) +
+  labs(x="Median Income", y = "Pills Per Person") + 
+  geom_text_repel(aes(med_income, pills_per_pop, label=BUYER_COUNTY)) +
+   geom_smooth(aes(med_income, pills_per_pop), method= 'lm', se = FALSE)
+
+#! 17) Which county in Maryland distributed the least pills per person between 2006 and 2012? 
+
+## Montgomery County. 
+
+#! 18) What is the median household income of Montgomery County? 
+
+MD_INCOME_PILLS %>%
+  select(BUYER_COUNTY, pills_per_pop) %>%
+  arrange(pills_per_pop)
+
+## Montgomery County 
+```
+
+```{r}
+
+#! 19) How do I build a table that contains that same information but for counties across the country? 
+
+# BUILDING TABLE CONTAINING NATIONAL STATE MEDIAN INCOME VS. PILLS PER PERSON 
+
+NAT_COUNTY_POP <- NAT_COUNTY_POP %>%
+  filter(variable == "POP")
+
+NAT_C_INCOME_POP <- inner_join(NAT_COUNTY_POP, NAT_C_MED_INCOME, by = "GEOID") %>%
+  select(NAME.x, GEOID, value, estimate)
+
+total_pills <- summarized_county_annual(key = arcos_key)
+
+NAT_COMBINED <- NAT_C_INCOME_POP %>%
+  right_join(total_pills, by = c("GEOID" = "countyfips")) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, GEOID, value, estimate) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT))
+
+NAT_COMBINED <- NAT_COMBINED %>%
+  rename(med_income = pop)
+
+NAT_COMBINED <- NAT_COMBINED %>%
+  rename(population = value)
+```
+
+```{r}
+
+#! 20) How do I calculate the pills per person for the national counties? 
+
+ NAT_COMBINED <- NAT_COMBINED %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
+```
+
+```{r}
+
+#! 21) Why can't I graph the counties the same way? 
+
+## The data is too large and can't plot every county, so in order to build a linear chart like I did in the Maryland map, then I'll need to group by state and then map by median income. 
+
+#! 22) How do I combined everything so I can graph by states?
+
+  
+STATE_COMBINED <- NAT_COMBINED %>%
+  select(BUYER_STATE, value, med_income, GEOID, pills_per_person) 
+
+left_join(STATE_COMBINED, state_names, by = c("BUYER_STATE" = "abb"))
+
+state_names <- tibble(state = state.name) %>%
+   bind_cols(tibble(abb = state.abb)) %>% 
+   bind_rows(tibble(state = "District of Columbia", abb = "DC"))
+
+
+
+
+```
+

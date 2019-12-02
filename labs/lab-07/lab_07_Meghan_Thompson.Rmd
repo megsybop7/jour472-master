@@ -80,6 +80,7 @@ We're also going to load two new packages: [mapview](https://r-spatial.github.io
 
 ```{r}
 
+install.packages("ggrepel")
 
 
 library(tidyverse)
