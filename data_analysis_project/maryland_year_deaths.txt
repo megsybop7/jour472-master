@@ -1,0 +1,194 @@
+"Notes"	"County"	"County Code"	"Race"	"Race Code"	"Year"	"Year Code"	Deaths	Population	Crude Rate	Age Adjusted Rate
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2006"	"2006"	12	68055	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2007"	"2007"	11	68220	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2008"	"2008"	10	68058	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2010"	"2010"	11	67900	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2011"	"2011"	15	67248	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"White"	"2106-3"	"2012"	"2012"	13	66653	Unreliable	Unreliable
+	"Anne Arundel County, MD"	"24003"	"Black or African American"	"2054-5"	"2006"	"2006"	10	79815	Unreliable	Unreliable
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2006"	"2006"	63	417116	15.1	15.0
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2007"	"2007"	74	416631	17.8	17.4
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2008"	"2008"	74	418141	17.7	16.6
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2009"	"2009"	73	421779	17.3	17.0
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2010"	"2010"	60	424622	14.1	14.1
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2011"	"2011"	84	427546	19.6	19.2
+	"Anne Arundel County, MD"	"24003"	"White"	"2106-3"	"2012"	"2012"	78	431441	18.1	17.9
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2006"	"2006"	26	199372	13.0	12.9
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2007"	"2007"	18	204603	Unreliable	Unreliable
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2008"	"2008"	18	208941	Unreliable	Unreliable
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2009"	"2009"	18	214372	Unreliable	Unreliable
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2010"	"2010"	18	218205	Unreliable	Unreliable
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2011"	"2011"	21	222527	9.4	9.7
+	"Baltimore County, MD"	"24005"	"Black or African American"	"2054-5"	"2012"	"2012"	17	226803	Unreliable	Unreliable
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2006"	"2006"	117	554311	21.1	21.6
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2007"	"2007"	112	549355	20.4	21.4
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2008"	"2008"	121	545420	22.2	22.3
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2009"	"2009"	113	541372	20.9	21.4
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2010"	"2010"	111	539191	20.6	21.7
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2011"	"2011"	101	538143	18.8	19.2
+	"Baltimore County, MD"	"24005"	"White"	"2106-3"	"2012"	"2012"	143	538953	26.5	27.5
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2006"	"2006"	10	73426	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2007"	"2007"	14	73333	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2009"	"2009"	13	73658	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2010"	"2010"	11	74031	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2011"	"2011"	15	74254	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"White"	"2106-3"	"2012"	"2012"	14	74831	Unreliable	Unreliable
+	"Caroline County, MD"	"24011"	"White"	"2106-3"	"2011"	"2011"	13	27321	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2006"	"2006"	18	158342	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2007"	"2007"	20	158483	12.6	13.4
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2008"	"2008"	20	158392	12.6	14.7
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2009"	"2009"	22	157946	13.9	13.9
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2010"	"2010"	13	157990	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2011"	"2011"	16	157520	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"White"	"2106-3"	"2012"	"2012"	31	157556	19.7	21.2
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2006"	"2006"	28	91465	30.6	30.9
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2007"	"2007"	30	91886	32.6	33.6
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2008"	"2008"	14	92055	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2009"	"2009"	21	92363	22.7	22.6
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2010"	"2010"	29	92433	31.4	33.9
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2011"	"2011"	34	92508	36.8	38.7
+	"Cecil County, MD"	"24015"	"White"	"2106-3"	"2012"	"2012"	30	92754	32.3	31.1
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2007"	"2007"	11	80259	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2008"	"2008"	16	78575	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2009"	"2009"	13	77258	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2010"	"2010"	10	77102	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2011"	"2011"	17	78254	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"White"	"2106-3"	"2012"	"2012"	14	77600	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2006"	"2006"	20	195784	10.2	10.3
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2007"	"2007"	18	196887	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2008"	"2008"	15	197484	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2009"	"2009"	20	198187	10.1	10.3
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2010"	"2010"	15	199825	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2011"	"2011"	29	201723	14.4	14.5
+	"Frederick County, MD"	"24021"	"White"	"2106-3"	"2012"	"2012"	30	204002	14.7	15.3
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2006"	"2006"	40	204863	19.5	19.4
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2007"	"2007"	33	203809	16.2	16.5
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2008"	"2008"	34	203914	16.7	17.4
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2009"	"2009"	33	203652	16.2	17.1
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2010"	"2010"	38	203928	18.6	20.0
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2011"	"2011"	39	204106	19.1	19.7
+	"Harford County, MD"	"24025"	"White"	"2106-3"	"2012"	"2012"	46	205559	22.4	21.1
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2006"	"2006"	13	189108	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2007"	"2007"	19	188295	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2008"	"2008"	16	187571	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2009"	"2009"	18	187475	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2010"	"2010"	10	187788	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2011"	"2011"	22	189665	11.6	12.4
+	"Howard County, MD"	"24027"	"White"	"2106-3"	"2012"	"2012"	26	191373	13.6	13.4
+	"Montgomery County, MD"	"24031"	"Black or African American"	"2054-5"	"2012"	"2012"	10	192126	Unreliable	Unreliable
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2006"	"2006"	35	623515	5.6	5.4
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2007"	"2007"	49	621557	7.9	7.6
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2008"	"2008"	52	624359	8.3	7.9
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2009"	"2009"	37	630674	5.9	5.8
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2010"	"2010"	26	635918	4.1	4.1
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2011"	"2011"	40	642904	6.2	5.9
+	"Montgomery County, MD"	"24031"	"White"	"2106-3"	"2012"	"2012"	43	648591	6.6	6.4
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2006"	"2006"	26	575492	4.5	4.5
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2007"	"2007"	26	574014	4.5	4.6
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2008"	"2008"	35	574216	6.1	5.7
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2009"	"2009"	33	578848	5.7	5.4
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2010"	"2010"	23	583429	3.9	3.6
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2011"	"2011"	28	583680	4.8	4.2
+	"Prince George's County, MD"	"24033"	"Black or African American"	"2054-5"	"2012"	"2012"	26	589606	4.4	4.0
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2006"	"2006"	17	230267	Unreliable	Unreliable
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2007"	"2007"	19	228726	Unreliable	Unreliable
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2008"	"2008"	23	227667	10.1	9.9
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2009"	"2009"	35	227738	15.4	14.7
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2010"	"2010"	32	229087	14.0	14.9
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2011"	"2011"	23	235588	9.8	9.5
+	"Prince George's County, MD"	"24033"	"White"	"2106-3"	"2012"	"2012"	33	237912	13.9	14.3
+	"St. Mary's County, MD"	"24037"	"White"	"2106-3"	"2008"	"2008"	11	83053	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"White"	"2106-3"	"2010"	"2010"	13	85362	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"White"	"2106-3"	"2012"	"2012"	11	88431	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2006"	"2006"	21	128241	16.4	16.9
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2007"	"2007"	18	129222	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2008"	"2008"	21	129068	16.3	16.3
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2009"	"2009"	15	128986	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2010"	"2010"	17	129044	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2011"	"2011"	20	128967	15.5	15.4
+	"Washington County, MD"	"24043"	"White"	"2106-3"	"2012"	"2012"	26	129295	20.1	21.1
+	"Wicomico County, MD"	"24045"	"White"	"2106-3"	"2006"	"2006"	14	69106	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"White"	"2106-3"	"2009"	"2009"	15	70327	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"White"	"2106-3"	"2011"	"2011"	13	70231	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"White"	"2106-3"	"2012"	"2012"	17	71103	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"White"	"2106-3"	"2006"	"2006"	10	42599	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"White"	"2106-3"	"2008"	"2008"	11	43090	Unreliable	Unreliable
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2006"	"2006"	175	411697	42.5	44.0
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2007"	"2007"	170	409791	41.5	42.0
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2008"	"2008"	112	408226	27.4	28.2
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2009"	"2009"	132	406046	32.5	31.6
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2010"	"2010"	86	404965	21.2	20.6
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2011"	"2011"	70	401225	17.4	18.1
+	"Baltimore city, MD"	"24510"	"Black or African American"	"2054-5"	"2012"	"2012"	122	402702	30.3	30.3
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2006"	"2006"	82	191828	42.7	39.9
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2007"	"2007"	92	192362	47.8	47.9
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2008"	"2008"	55	193227	28.5	29.1
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2009"	"2009"	77	195044	39.5	39.3
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2010"	"2010"	63	196040	32.1	31.4
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2011"	"2011"	73	198045	36.9	36.3
+	"Baltimore city, MD"	"24510"	"White"	"2106-3"	"2012"	"2012"	72	197730	36.4	36.6
+"---"
+"Dataset: Multiple Cause of Death, 1999-2017"
+"Query Parameters:"
+"Title: maryland_year_deaths"
+"MCD - Drug/Alcohol Induced Causes: Drug-induced causes"
+"States: Maryland (24)"
+"UCD - Drug/Alcohol Induced Causes: Drug-induced causes"
+"Year/Month: 2006; 2007; 2008; 2009; 2010; 2011; 2012"
+"Group By: County; Race; Year"
+"Show Totals: Disabled"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Standard Population: 2000 U.S. Std. Population"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: Dec 10, 2019 9:51:48 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Multiple Cause of Death"
+"1999-2017 on CDC WONDER Online Database, released December, 2018. Data are from the Multiple Cause of Death Files, 1999-2017, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/mcd-icd10.html on Dec 10, 2019 9:51:48 PM"
+"---"
+Messages:
+"1. Totals are not available for these results due to suppression constraints. More Information:"
+"http://wonder.cdc.gov/wonder/help/faq.html#Privacy."
+"2. Rows with suppressed Deaths are hidden. Use Quick Options above to show suppressed rows."
+"---"
+Caveats:
+"1. Deaths and population estimates are reported separately for Baltimore City (FIPS code 24510) and Baltimore county (FIPS code"
+"24005)."
+"2. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Assurance of Confidentiality."
+"3. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Unreliable."
+"4. The populations used to calculate standard age-adjusted rates are documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2000 Standard Population."
+"5. The method used to calculate age-adjusted rates is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Age-Adjusted Rates."
+"6. Deaths for persons of unknown age are included in counts and crude rates, but are not included in age-adjusted rates."
+"7. Information included on the death certificate about the race and Hispanic ethnicity of the decedent is reported by the"
+"funeral director as provided by an informant, often the surviving next of kin, or, in the absence of an informant, on the basis"
+"of observation. Race and ethnicity information from the census is by self-report. To the extent that race and Hispanic origin"
+"are inconsistent between these two data sources, death rates will be biased. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Racial Differences."
+"8. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the Vintage 2017"
+"postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The population figures for"
+"year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal series released by NCHS"
+"on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26, 2014. The"
+"population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012 postcensal"
+"series released by NCHS on June 13, 2013. Population figures for 2011 are bridged-race estimates of the July 1 resident"
+"population, from the county-level postcensal Vintage 2011 series released by NCHS on July 18, 2012. Population figures for 2010"
+"are April 1 Census counts. The population figures for years 2001 - 2009, are bridged-race estimates of the July 1 resident"
+"population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population"
+"figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1"
+"estimates. Population figures for Infant Age Groups are the number of live births. <br/><b>Note:</b> Rates and population"
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which"
+"were available at the time of release."
+"9. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."

@@ -1,0 +1,24 @@
+﻿"Title: Opioid Overdose Deaths by Race/Ethnicity | The Henry J. Kaiser Family Foundation"
+"Timeframe: 2006 - 2012"
+"Location","2006__White, Non-Hispanic","2006__Black, Non-Hispanic","2006__Hispanic","2006__Total","2007__White, Non-Hispanic","2007__Black, Non-Hispanic","2007__Hispanic","2007__Total","2008__White, Non-Hispanic","2008__Black, Non-Hispanic","2008__Hispanic","2008__Total","2009__White, Non-Hispanic","2009__Black, Non-Hispanic","2009__Hispanic","2009__Total","2010__White, Non-Hispanic","2010__Black, Non-Hispanic","2010__Hispanic","2010__Total","2011__White, Non-Hispanic","2011__Black, Non-Hispanic","2011__Hispanic","2011__Total","2012__White, Non-Hispanic","2012__Black, Non-Hispanic","2012__Hispanic","2012__Total",Footnotes
+"United States","14391","1535","1313","17541","15506","1319","1361","18516","16405","1291","1482","19582","17084","1380","1470","20422","17927","1339","1373","21089","19132","1489","1634","22784","19239","1619","1718","23157","1, 2"
+
+"Notes"
+"The National Vital Statistics System multiple cause-of-death mortality files were used to identify drug overdose deaths. Drug overdose deaths were classified using the International Classification of Disease, Tenth Revision (ICD-10), based on the ICD-10 underlying cause-of-death codes X40–44 (unintentional), X60–64 (suicide), X85 (homicide), or Y10–Y14 (undetermined intent). Among the deaths with drug overdose as the underlying cause, the type of opioid involved is indicated by the following ICD-10 multiple cause-of-death codes: opioids (T40.0, T40.1, T40.2, T40.3, T40.4, or T40.6); natural and semisynthetic opioids (T40.2); methadone (T40.3); synthetic opioids, other than methadone (T40.4); and heroin (T40.1)."
+""
+"Other races are excluded from this table. Deaths from illegally-made fentanyl cannot be distinguished from pharmaceutical fentanyl in the data source. For this reason, deaths from both legally prescribed and illegally produced fentanyl are included in these data."
+""
+"Rates displayed in the table are age-adjusted rates per 100,000 population."
+
+"Sources"
+"Kaiser Family Foundation analysis of Centers for Disease Control and Prevention (CDC), National Center for Health Statistics. Multiple Cause of Death 1999-2017 on CDC WONDER Online Database, released 2018. Data are from the Multiple Cause of Death Files, 1999-2017, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed at [http://wonder.cdc.gov/mcd-icd10.html](http://wonder.cdc.gov/mcd-icd10.html) on January 10, 2019."
+
+"Definitions"
+"*NSD*: Not sufficient data. Data supressed to ensure confidentiality."
+""
+"*NR*: Data not reported. Data unreliable."
+
+
+Footnotes
+"1. Total opioid overdose deaths reported for the United States exclude opioid deaths in North Dakota in 2012, 2006, and 2005 and opioid deaths in Alaska in 2002. In these years, data are not available for the states due to suppression constraints and are therefore excluded from the US total and corresponding percentages reported here."
+"2. The total number of opioid overdose deaths reported for Non-Hispanic Whites in the United States exclude opioid deaths in DC in 2013, 2010, 2009, 2008 and 2007 and opioid deaths in North Dakota in 2011. In these years, data are not available for the states due to supression constraints and are therefore excluded from the US total."

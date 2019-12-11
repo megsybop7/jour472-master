@@ -20,6 +20,10 @@ library(scales)
 library(arcos)
 library(stringr)
 library(ggrepel)
+library(corrr)
+library(biscale)
+library(sf)
+
 
 
 # KEYS
@@ -196,6 +200,9 @@ MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
 MD_INCOME_PILLS <- MD_INCOME_PILLS %>%
   mutate(pills_per_person = DOSAGE_UNIT / population)
 
+MD_INCOME_PILLS %>%
+  rm(pills_per_pop)
+
 #! 14) Which county in Maryland distributed the most pills per person between 2006 and 2012?  
 
 # Kent County 
@@ -218,6 +225,15 @@ ggplot(MD_INCOME_PILLS) +
   labs(x="Median Income", y = "Pills Per Person") + 
   geom_text_repel(aes(med_income, pills_per_pop, label=BUYER_COUNTY)) +
    geom_smooth(aes(med_income, pills_per_pop), method= 'lm', se = FALSE)
+
+# Correlations
+
+MD_INCOME_PILLS %>%
+  select(pills_per_person, med_income, pills_per_pop) %>%
+  correlate() %>%
+  select(rowname, pills_per_person)
+
+cor.test(MD_INCOME_PILLS$pills_per_person, MD_INCOME_PILLS$med_income)
 
 #! 17) Which county in Maryland distributed the least pills per person between 2006 and 2012? 
 
@@ -333,6 +349,13 @@ ggplot(STATE_COMBINED) +
   geom_text_repel(aes(estimate, pills_per_person, label= BUYER_STATE)) +
    geom_smooth(aes(estimate, pills_per_person), method= 'lm', se = FALSE)
 
+STATE_COMBINED %>% 
+  ungroup() %>%
+  select(estimate, pills_per_person) %>%
+  correlate()
+
+cor.test(STATE_COMBINED$estimate, STATE_COMBINED$pills_per_person)
+
 #! 28) Is there a relationship between median income and pills per person? 
 
 ## Yes, there is an obvious negative correlation between median income and pills per person. As median income increases, so does the pills per person a state can offer. 
@@ -349,14 +372,712 @@ ggplot(STATE_COMBINED) +
 
 ```{r}
 
-# Map out income vs. pills per person at state and national level. 
+#! 31) How does Maryland compare to states of similar population size and median income? 
 
-# Visualize relationship between proximity to Baltimore City and pills per person. 
+## NEW JERSEY 
+STATE_COMBINED %>%
+  select(state, population, pills_per_person, estimate) %>%
+  arrange(desc(estimate)) %>%
+  filter(population >= 3000000,
+         estimate >= 60000)
 
-# Visualize how pharmacies are targeting areas of lower income in the U.S. compared to in Maryland. 
+NJ_combined <- summarized_county_annual(state="NJ", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT)) %>%
+  inner_join(NJ_C_med_income, by = c("countyfips" = "GEOID")) %>%
+  left_join(NAT_COUNTY_POP, by = c("countyfips"= "GEOID"))
 
-# Establish correlation between income and pills per person. 
+NJ_combined <- NJ_combined %>%
+  select(BUYER_COUNTY, BUYER_STATE, countyfips, DOSAGE_UNIT, estimate, estimate, value) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
+NJ_C_med_income <- NAT_C_MED_INCOME %>%
+  filter(str_detect(NAME, "New Jersey"))
+
+```
+
+```{r}
+
+## CONNECTICUT mass VA 
+
+CT_C_med_income <- NAT_C_MED_INCOME %>%
+  filter(str_detect(NAME, "Connecticut"))
+
+CT_combined <- summarized_county_annual(state="CT", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT)) %>%
+  inner_join(CT_C_med_income, by = c("countyfips" = "GEOID")) %>%
+  left_join(NAT_COUNTY_POP, by = c("countyfips"= "GEOID"))
+
+CT_combined <- CT_combined %>%
+  select(BUYER_COUNTY, BUYER_STATE, countyfips, DOSAGE_UNIT, estimate, estimate, value) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
 
 
 ```
 
+```{r}
+
+# MASSACHUSETTS 
+
+MA_C_med_income <- NAT_C_MED_INCOME %>%
+  filter(str_detect(NAME, "Massachusetts"))
+
+MA_combined <- summarized_county_annual(state="MA", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT)) %>%
+  inner_join(MA_C_med_income, by = c("countyfips" = "GEOID")) %>%
+  left_join(NAT_COUNTY_POP, by = c("countyfips"= "GEOID"))
+
+MA_combined <- MA_combined %>%
+  select(BUYER_COUNTY, BUYER_STATE, countyfips, DOSAGE_UNIT, estimate, estimate, value) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
+
+```
+
+```{r}
+
+VA_C_med_income <- NAT_C_MED_INCOME %>%
+  filter(str_detect(NAME, "Virginia"))
+
+VA_combined <- summarized_county_annual(state="VA", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT)) %>%
+  inner_join(VA_C_med_income, by = c("countyfips" = "GEOID")) %>%
+  left_join(NAT_COUNTY_POP, by = c("countyfips"= "GEOID"))
+
+VA_combined <- VA_combined %>%
+  select(BUYER_COUNTY, BUYER_STATE, countyfips, DOSAGE_UNIT, estimate, estimate, value) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
+
+```
+
+```{r}
+
+# Datasets with all six states 
+
+
+VA_combined <- summarized_county_annual(state="VA", key = arcos_key) %>%
+  group_by(BUYER_COUNTY, BUYER_STATE, countyfips) %>%
+  summarise(DOSAGE_UNIT = sum(DOSAGE_UNIT)) %>%
+  arrange(desc(DOSAGE_UNIT)) %>%
+  inner_join(VA_C_med_income, by = c("countyfips" = "GEOID")) %>%
+  left_join(NAT_COUNTY_POP, by = c("countyfips"= "GEOID"))
+
+VA_combined <- VA_combined %>%
+  select(BUYER_COUNTY, BUYER_STATE, countyfips, DOSAGE_UNIT, estimate, estimate, value) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value)
+
+```
+
+```{r}
+
+# Map out comparing similar states 
+
+similar <- c("MD", "VA", "CT", "MA", "NJ")
+
+similar_states <- NAT_COMBINED %>%
+  filter(BUYER_STATE == "MD"| BUYER_STATE == "CT" | BUYER_STATE == "NJ" | BUYER_STATE == "MA") %>%
+  arrange(BUYER_STATE)
+
+
+ggplot(similar_states) + 
+  geom_point(aes(med_income, pills_per_person)) +
+  labs(x="Median Income", y = "Pills Per Person") +
+  scale_x_continuous(labels = comma) +
+  geom_smooth(aes(med_income, pills_per_person), method= 'lm', se = FALSE) +
+  facet_wrap(nrow=2, . ~ BUYER_STATE, shrink = TRUE)
+
+
+# Map Maryland with pills per person. 
+
+# Map entire country by county with colors representing higher opioid use 
+
+```
+
+```{r}
+
+
+cor.test(CT_combined$value, CT_combined$pills_per_person)
+
+cor.test(NJ_combined$value, NJ_combined$pills_per_person)
+
+cor.test(MA_combined$value, MA_combined$pills_per_person)
+
+cor.test(VA_combined$value, VA_combined$pills_per_person)
+
+
+```
+
+```{r}
+
+# Poor areas correlation test 
+
+wealthy_states <- NAT_COMBINED %>%
+  filter(BUYER_STATE == "MD" | BUYER_STATE == "NJ" | BUYER_STATE == "AK" | BUYER_STATE == "CT")
+
+wealthy_states %>%
+  ungroup() %>%
+  select(estimate, pills_per_person) %>%
+  correlate()
+
+cor.test(wealthy_states$estimate, wealthy_states$pills_per_person)
+
+poor_states <-NAT_COMBINED %>%
+  filter(BUYER_STATE == "MS" | BUYER_STATE == "WV" | BUYER_STATE == "AR" | BUYER_STATE == "KY")
+
+poor_states %>%
+  ungroup() %>%
+  select(estimate, pills_per_person) %>%
+  correlate()
+  
+cor.test(poor_states$estimate, poor_states$pills_per_person)
+
+
+```
+
+```{r}
+
+#Correlation between med_income and pills_per_person nationally at the county level. 
+
+NAT_COMBINED %>%
+  ungroup() %>%
+  select(estimate, pills_per_person) %>%
+  correlate()
+
+cor.test(NAT_COMBINED$estimate, NAT_COMBINED$pills_per_person)
+```
+
+```{r}
+
+# Mapping pills per person in Maryland 
+
+MD_geodata_shifted <- MD_geodata_shifted %>%
+  inner_join(MD_INCOME_PILLS, by = "GEOID")
+
+MD_geodata_shifted <- county_geodata_shifted %>%
+  filter(str_detect(NAME, "Maryland")) 
+
+
+
+bi_class <- bi_class(MD_geodata_shifted, med_income, pills_per_person, style = "quantile", dim = 3)
+
+bi_class %>%
+ggplot() +
+geom_sf(mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+bi_scale_fill(pal = "DkBlue", dim = 3) +
+labs(fill = "Pills Per Person" title = "Pills Per Person between 2006 and 2012 in Maryland Counties", caption = "Source: Washington Post ARCOS Database") +
+bi_theme()
+
+
+```
+
+```{r}
+
+#Pills per person across the nation 
+
+county_geodata_shifted <- county_geodata_shifted %>%
+  inner_join(NAT_COMBINED, by = "GEOID") 
+
+state_geodata_shifted <- state_geodata_shifted %>%
+  inner_join(STATE_COMBINED, by = "GEOID")
+
+state_geodata_shifted %>%
+  ggplot(aes(fill = pills_per_person, na.rm = TRUE)) +
+  labs(fill = "Pills Per Person", title = "Pills Per Person between 2006 and 2012 at the state leve", caption = "Source: Washington Post ARCOS Database") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma) 
+
+
+```
+
+```{r}
+
+CT_combined <- county_geodata_shifted %>%
+  filter(str_detect(NAME, "Connecticut")) %>%
+  inner_join(CT_combined, NAME, by = c("GEOID" = "countyfips")) %>%
+
+CT_combined %>%
+  ggplot(aes(fill = pills_per_person, na.rm = TRUE)) +
+  labs(fill = "Pills Per Person", title = "Pills Per Person between 2006 and 2012 at the state leve", caption = "Source: Washington Post ARCOS Database") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma)  
+
+  
+```
+
+```{r}
+
+MD_geodata_shifted %>%
+  ggplot(aes(fill = pills_per_person, na.rm = TRUE)) +
+  labs(fill = "Pills Per Person", title = "Pills Per Person between 2006 and 2012 at the state leve", caption = "Source: Washington Post ARCOS Database") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma)  
+
+
+
+```
+
+```{r}
+
+
+md_pills_map <- MD_geodata_shifted %>%
+  ggplot(aes(fill = pills_per_person, na.rm = TRUE)) +
+  labs(fill = "Pills Per Person") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma)  
+
+
+
+```
+
+```{r}
+
+md_income_map <- MD_geodata_shifted %>%
+  ggplot(aes(fill = med_income, na.rm = TRUE)) +
+  labs(fill = "Median Income") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma)  
+
+
+```
+
+
+```{r}
+#install.packages('ggpubr')
+library(ggpubr)
+
+ggarrange(md_income_map, md_pills_map, ncol=1, nrow=2)
+```
+
+
+```{r}
+
+death_rates <- read_tsv("2006-2012.csv") %>%
+  clean_names() %>%
+  filter(!str_detect(age_adjusted_rate, "Suppressed|Missing|Unreliable")) %>%
+  mutate(age_adjusted_rate = as.numeric(age_adjusted_rate))
+
+MD_DEATH_INCOME <- death_rates %>%
+  inner_join(MD_INCOME_PILLS, by = c("county_code" = "GEOID"))
+
+ggplot(MD_DEATH_INCOME) + 
+  geom_point(aes(age_adjusted_rate, pills_per_person)) +
+  labs(x="Death Rate", y = "Pills Per Person") + 
+  geom_text_repel(aes(age_adjusted_rate, pills_per_person, label= county)) +
+  geom_smooth(aes(age_adjusted_rate, pills_per_person), method= 'lm', se = FALSE)
+
+```
+
+```{r}
+
+census_api_key("6807e6be8b6aeed023ebd2791acda76a66b32754")
+
+variables <- load_variables(2012, "acs5")
+
+# B01001_001 total pop 
+# B19013_001 median household income 
+# B02001_002 white population 
+# B02001_003 black population 
+# B06012_002 people living in poverty 
+
+white_population <- get_acs(geography = "county", variables = "B02001_002", summary_var = "B01001_001", year = 2012) %>%
+  arrange(desc(estimate)) %>%
+  mutate(percent_white = estimate / summary_est) %>%
+  mutate(percent_not_white = 1 - percent_white)
+
+black_population <- get_acs(geography = "county", variables = "B02001_003", summary_var = "B01001_001", year = 2012) %>%
+  arrange(desc(estimate)) %>%
+  mutate(percent_black = estimate / summary_est)
+
+MD_death_black <- death_rates %>%
+  inner_join(black_population, by = c("county_code" = "GEOID"))
+
+ggplot(MD_death_black) + 
+  geom_point(aes(age_adjusted_rate, percent_black)) +
+  labs(x="Death Rate", y = "pct_black") +
+  geom_text_repel(aes(age_adjusted_rate, percent_black, label= county), subset(MD_death_black, (county == "Baltimore city, MD") | (percent_black > .6))) + 
+  geom_smooth(aes(age_adjusted_rate, percent_black), method= 'lm', se = FALSE)
+
+
+```
+
+```{r}
+
+poverty_rate <- get_acs(geography = "county", variables = "B06012_002", summary_var = "B01001_001", year = 2012) %>%
+  mutate(poverty_rate = estimate / summary_est)
+
+poverty_pills <- poverty_rate %>%
+  inner_join(death_rates, by = c("GEOID" = "county_code"))
+
+cor.test(poverty_pills$poverty_rate, poverty_pills$age_adjusted_rate)
+
+ggplot(poverty_pills) + 
+  geom_point(aes(poverty_rate, age_adjusted_rate)) +
+  labs(x="percent_in_poverty", y = "death_rate") +
+  geom_smooth(aes(poverty_rate, age_adjusted_rate), method= 'lm', se = FALSE)
+
+
+# Weak positive correlation between counties with greater number of people 
+
+
+```
+
+```{r}
+
+MD_poverty_rate <- poverty_rate %>%
+  filter(str_detect(NAME, "Maryland")) %>%
+  arrange(desc(poverty_rate))
+
+MD_death_rate <- death_rates %>%
+  filter(str_detect(county, "MD"))
+
+MD_poverty_death <- MD_poverty_rate %>%
+  inner_join(MD_death_rate, by = c("GEOID" = "county_code"))
+
+ggplot(MD_poverty_death) + 
+  geom_point(aes(poverty_rate, age_adjusted_rate)) + 
+  labs(x = "percent_in_poverty", y = "death_rate") + 
+  geom_text_repel(aes(poverty_rate, age_adjusted_rate, label= county)) +
+  geom_smooth(aes(poverty_rate, age_adjusted_rate), method = 'lm', se = FALSE)
+
+# Baltimore City has the most citizens living in poverty throughout all Maryland counties, meaning the deaths caused by opioids should be fairly high. 
+
+MD_poverty_rate %>%
+  inner_join()
+
+# Baltimore City is not only the poorest county in Maryland, but has the most deaths caused by opioids than any other county. 
+
+```
+
+```{r}
+
+black_population %>%
+  inner_join(death_rate, by = )
+
+view(map)
+```
+
+```{r}
+
+black_population <- get_acs(geography = "county", variables = "B02001_003", summary_var = "B01001_001", year = 2012) %>%
+  arrange(desc(estimate)) %>%
+  mutate(percent_black = estimate / summary_est)
+
+MD_death_black <- death_rates %>%
+  inner_join(black_population, by = c("county_code" = "GEOID")) %>%
+  filter(str_detect(county, "MD"))
+
+ggplot(MD_death_black) + 
+  geom_point(aes(age_adjusted_rate, percent_black)) +
+  labs(x="Death Rate", y = "pct_black") +
+  geom_text_repel(aes(age_adjusted_rate, percent_black, label= NAME), subset(MD_death_black, (NAME == "Baltimore city, MD") | (percent_black > .6))) + 
+  geom_smooth(aes(age_adjusted_rate, percent_black), method= 'lm', se = FALSE)
+
+```
+
+```{r}
+
+black_population <- get_acs(geography = "county", variables = "B02001_003", summary_var = "B01001_001", year = 2012) %>%
+  arrange(desc(estimate)) %>%
+  mutate(percent_black = estimate / summary_est)
+
+nat_black_deaths <- death_rates %>%
+  inner_join(black_population, by = c("county_code" = "GEOID"))
+
+ggplot(nat_black_deaths) + 
+  geom_point(aes(percent_black, age_adjusted_rate)) +
+  labs(x="pct_black", y = "death_rate") +
+  geom_text_repel(aes(percent_black, age_adjusted_rate, label= NAME), subset(nat_black_deaths, (county == "Baltimore city, MD")|percent_black > .6)) +
+  geom_smooth(aes(percent_black, age_adjusted_rate), method= 'lm', se = FALSE)
+
+
+  
+```
+
+```{r}
+
+
+nat_black_pills %>%
+  filter(str_detect(BUYER_STATE, "MD")|pc) %>%
+  summarise(sum(DOSAGE_UNIT)) 
+
+
+md_black_pills <- nat_black_pills %>%
+  filter(str_detect(BUYER_STATE, "MD")) %>%
+  mutate(percent_of_pills = DOSAGE_UNIT/1165084559)
+
+```
+
+
+```{r}
+
+MD_death_pills <- MD_death_black %>%
+  inner_join(MD_INCOME_PILLS, by=c("county_code" = "GEOID"))
+
+ggplot(MD_death_pills) + 
+  geom_point(aes(percent_black, pills_per_person)) +
+  labs(x="percent_black", y = "pills_per_person") + 
+  geom_text_repel(aes(percent_black, pills_per_person, label= county)) +
+   geom_smooth(aes(percent_black, pills_per_person), method= 'lm', se = FALSE)
+
+
+
+```
+
+```{r}
+
+nat_black_pills <- black_population %>%
+  inner_join(NAT_COMBINED, by = "GEOID")
+
+md_black_pills <- md_black_pills %>% 
+  mutate(percent_of_black_population = estimate.x / sum(estimate.x))
+```
+
+```{r}
+
+
+
+heroin_stats <- read_csv("stat_sig.csv")
+
+heroin_small_states <- heroin_stats %>%
+  clean_names() %>% 
+  filter(state == "Massachusetts"| state == "Connecticut" | state == "Rhode Island" | state == "New Hampshire" | state == "Maryland")
+
+heroin_stats <- heroin_stats %>%
+  inner_join()
+OD_black <- nat_black_pills %>%
+  group_by_(BUYER_STATE) %>% 
+  summarise()
+  
+
+```
+
+```{r}
+
+
+
+overdose_deaths <- read_csv("racial_opioid - raw_data (3).csv")%>%
+  clean_names()
+
+overdose_deaths$total <- as.numeric(overdose_deaths$total)
+overdose_deaths$white_non_hispanic <- as.numeric(overdose_deaths$white_non_hispanic)
+overdose_deaths$black_non_hispanic <- as.numeric(overdose_deaths$black_non_hispanic)
+
+overdose_deaths <- overdose_deaths %>%
+  mutate(percent_white_deaths = white_non_hispanic / total) %>%
+  arrange(desc(percent_white_deaths))
+
+ggplot(overdose_deaths) + 
+  geom_point(aes() +
+  labs(x="percent_black", y = "pills_per_person") + 
+  geom_text_repel(aes(percent_black, pills_per_person, label= county)) +
+  geom_smooth(aes(percent_black, pills_per_person), method= 'lm', se = FALSE)
+
+      #select(location,
+         x2006_white_non_hispanic, 
+         x2006_total, 
+         x2007_white_non_hispanic, 
+         x2007_total, 
+         x2008_white_non_hispanic, 
+         x2008_total,
+         x2009_white_non_hispanic, 
+         x2009_total,
+         x2010_white_non_hispanic, 
+         x2010_total, 
+         x2011_white_non_hispanic, 
+         x2011_total, 
+         x2012_white_non_hispanic, 
+         x2012_total)
+
+
+```
+
+```{r}
+
+
+overdoses_2006_2012 <- read_csv("2006_2012_opioid_overdose_deaths.csv") %>%
+  clean_names()
+
+overdoses_2006_2012 %>%
+  filter_all(any_vars())
+  
+
+```
+
+```{r}
+
+
+
+```
+
+```{r}
+
+deaths_by_year <- read_tsv("death_by_year.txt") 
+
+MD_deaths_by_year$age_adjusted_rate <- as.numeric(MD_deaths_by_year$age_adjusted_rate)
+
+MD_deaths_by_year <- deaths_by_year %>%
+  clean_names() %>%
+  filter(str_detect(county, "Baltimore city, MD"))
+
+ggplot(MD_deaths_by_year) + 
+  geom_bar(stat="identity", position = "dodge", aes(year, deaths), fill="blue") + 
+  labs(x="Year", y="Blacks", title="Opioid Related Deaths by Year", subtitle = "In Baltimore, more black people died from opioid use than white people", caption="Source: Center for Disease Control and Prevention ") + 
+  facet_wrap(~race) +
+  scale_x_continuous(breaks = c(2006, 2007, 2009, 2008, 2010, 2011, 2012))+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+```
+
+```{r}
+
+decade_deaths <- read_tsv("maryland_opioid_overtime.txt") %>%
+  clean_names() %>%
+  filter(crude_rate != "Unreliable"| age_adjusted_rate != "Unreliable")
+
+decade_deaths$age_adjusted_rate <- as.numeric(decade_deaths$age_adjusted_rate)
+
+ggplot(decade_deaths) + 
+  geom_bar(stat="identity", position = "dodge", aes(year, age_adjusted_rate), fill="blue") + 
+  labs(x="Year", y="Death Rate", title="Opioid Related Deaths by Year", subtitle = "In Baltimore, more black people died from opioid use than white people", caption="Source: Center for Disease Control and Prevention ") + 
+  facet_wrap(~race) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+```{r}
+
+
+baltimore_pills <- MD_C_annual_pills %>%
+  filter(BUYER_COUNTY == "BALTIMORE CITY") 
+
+rm(black_deaths_overtime)
+
+baltimore_annual_pills$countyfips <- as.numeric(baltimore_annual_pills$countyfips)
+
+black_deaths_baltimore <- decade_deaths %>%
+  filter(county == "Baltimore city, MD" & race != "White") %>%
+  filter(year==c(2006,2007,2008,2009,2010,2011,2012))
+
+baltimore_pills_deaths <- black_deaths_baltimore %>%
+  inner_join(baltimore_annual_pills, by = "year")
+
+overdoses_2006_2012 <- overdoses_2006_2012 %>%
+  clean_names()
+
+annual_deaths_maryland <- read_tsv("maryland_year_deaths.txt") %>%
+  clean_names()
+  
+annual_deaths_baltimore <- annual_deaths_maryland %>%
+  filter(county == "Baltimore city, MD") 
+
+annual_deaths_baltimore$age_adjusted_rate <- as.numeric("annual_deaths_baltimore$age_adjusted_rate")
+  
+baltimore_race_deaths <- overdoses_2006_2012 %>%
+  filter(county == "Baltimore city, MD")
+
+annual_deaths_baltimore <- annual_deaths_baltimore %>%
+  filter(race != "total")
+  
+ggplot(annual_deaths_baltimore) +
+  geom_bar(stat ="identity", position="dodge",aes(year, age_adjusted_rate))
+
+
+```
+
+```{r}
+
+black_counties_pills_deaths <- nat_counties_pills %>%
+  group_by(BUYER_COUNTY, countyfips) %>%
+  summarise(total = sum(DOSAGE_UNIT)) %>%
+  right_join(black_counties_death_rate, by = c("countyfips" = "county_code")) 
+
+ggplot(black_counties_pills_deaths) + 
+  geom_point(aes(x=total, y= age_adjusted_rate)) +
+  labs(x="percent_black", y = "Death Rate") + 
+  geom_text_repel(aes(total, age_adjusted_rate,label= BUYER_COUNTY)) +
+  scale_y_continuous() +
+  geom_smooth(aes(total, age_adjusted_rate), method= 'lm', se = FALSE)
+
+
+ 
+
+```
+
+```{r}
+
+ppp_over_time <- MD_C_annual_pills %>%
+  inner_join(MD_COUNTY_POP, by = c("countyfips" = "GEOID")) %>%
+  mutate(pills_per_person = DOSAGE_UNIT / value )
+
+ggplot(ppp_over_time, aes(year, pills_per_person, fill=BUYER_COUNTY)) +
+  geom_smooth(size =.5) +
+  geom_point(size=1) +
+  theme_bw() + 
+  xlab("Years") +
+  ylab("Concentrations (ppb)") +
+  ggtitle("Banizoumbou") + 
+  scale_y_continuous(labels = comma) + 
+  scale_x_continuous(breaks =2006:2012)
+
+ppp_time <- MD_death_pills %>%
+  filter(pills_per_person > 215 | BUYER_COUNTY == "PRINCE GEORGES")
+
+select_ppp <- ppp_over_time %>%
+  right_join(select_ppp, by = c("countyfips" = "county_code"))
+
+
+
+```
+
+```{r}
+
+select_ppp <- select_ppp %>%
+  group_by(BUYER_COUNTY.x, countyfips) %>%
+  summarise(sum(DOSAGE_UNIT.x))
+  
+deaths$county_code <- as.numeric(deaths$county_code)
+select_ppp$countyfips <- as.numeric(select_ppp$countyfips)
+
+glimpse(deaths)
+glimpse()
+
+deaths <- deaths %>%
+  inner_join(select_ppp, by = c("county_code" = "countyfips")) %>%
+  select(county, deaths, county_code, year_code)
+
+
+```
+
+```{r}
+
+ggplot(MD_C_annual_pills, aes(year,  ppb, shape=Gas, colour=Gas, fill=Gas)) +
+  geom_smooth(method="lm") +
+  geom_point(size=3) +
+  theme_bw() + 
+  xlab("Years") +
+  ylab("Concentrations (ppb)") +
+  ggtitle("Banizoumbou") + 
+  expand_limits(y=0) +
+  scale_y_continuous(breaks = 0:10) + 
+  scale_x_continuous(breaks = 1998:2015)
+  
+```
+
+```{r}
+
+ggplot(deaths, aes(x=year_code, y=deaths, color= county, shape= county)) +
+  geom_point() + 
+  geom_smooth(se=FALSE, fullrange=TRUE,  size = .5)
+
+
+```

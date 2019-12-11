@@ -1,0 +1,346 @@
+"Notes"	"County"	"County Code"	"Year"	"Year Code"	Deaths	Population	Crude Rate	Age Adjusted Rate
+	"Allegany County, MD"	"24001"	"2001"	"2001"	10	74525	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2003"	"2003"	16	74076	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2004"	"2004"	11	74408	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2006"	"2006"	13	73980	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2007"	"2007"	11	74449	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2008"	"2008"	11	74638	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2010"	"2010"	12	75087	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2011"	"2011"	16	74692	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2012"	"2012"	13	74012	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2013"	"2013"	16	73521	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2014"	"2014"	12	72952	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2015"	"2015"	16	72528	Unreliable	Unreliable
+	"Allegany County, MD"	"24001"	"2016"	"2016"	47	72130	65.2	70.5
+	"Allegany County, MD"	"24001"	"2017"	"2017"	39	71615	54.5	61.9
+	"Anne Arundel County, MD"	"24003"	"1999"	"1999"	41	484800	8.5	7.9
+	"Anne Arundel County, MD"	"24003"	"2000"	"2000"	55	489656	11.2	10.7
+	"Anne Arundel County, MD"	"24003"	"2001"	"2001"	50	498559	10.0	9.7
+	"Anne Arundel County, MD"	"24003"	"2002"	"2002"	62	504884	12.3	11.7
+	"Anne Arundel County, MD"	"24003"	"2003"	"2003"	51	507769	10.0	9.9
+	"Anne Arundel County, MD"	"24003"	"2004"	"2004"	70	513259	13.6	13.3
+	"Anne Arundel County, MD"	"24003"	"2005"	"2005"	72	516171	13.9	13.6
+	"Anne Arundel County, MD"	"24003"	"2006"	"2006"	73	517698	14.1	13.8
+	"Anne Arundel County, MD"	"24003"	"2007"	"2007"	81	520503	15.6	15.0
+	"Anne Arundel County, MD"	"24003"	"2008"	"2008"	80	525304	15.2	14.2
+	"Anne Arundel County, MD"	"24003"	"2009"	"2009"	81	532395	15.2	14.9
+	"Anne Arundel County, MD"	"24003"	"2010"	"2010"	67	537656	12.5	12.4
+	"Anne Arundel County, MD"	"24003"	"2011"	"2011"	91	544403	16.7	16.1
+	"Anne Arundel County, MD"	"24003"	"2012"	"2012"	82	550488	14.9	14.6
+	"Anne Arundel County, MD"	"24003"	"2013"	"2013"	98	555743	17.6	17.2
+	"Anne Arundel County, MD"	"24003"	"2014"	"2014"	123	560133	22.0	21.6
+	"Anne Arundel County, MD"	"24003"	"2015"	"2015"	134	564195	23.8	23.1
+	"Anne Arundel County, MD"	"24003"	"2016"	"2016"	222	568346	39.1	38.7
+	"Anne Arundel County, MD"	"24003"	"2017"	"2017"	259	573235	45.2	45.3
+	"Baltimore County, MD"	"24005"	"1999"	"1999"	105	749425	14.0	13.9
+	"Baltimore County, MD"	"24005"	"2000"	"2000"	104	754292	13.8	13.6
+	"Baltimore County, MD"	"24005"	"2001"	"2001"	131	762925	17.2	17.0
+	"Baltimore County, MD"	"24005"	"2002"	"2002"	150	770147	19.5	19.6
+	"Baltimore County, MD"	"24005"	"2003"	"2003"	164	777756	21.1	21.1
+	"Baltimore County, MD"	"24005"	"2004"	"2004"	107	784371	13.6	13.8
+	"Baltimore County, MD"	"24005"	"2005"	"2005"	120	789110	15.2	15.1
+	"Baltimore County, MD"	"24005"	"2006"	"2006"	143	793733	18.0	17.8
+	"Baltimore County, MD"	"24005"	"2007"	"2007"	132	796073	16.6	16.7
+	"Baltimore County, MD"	"24005"	"2008"	"2008"	139	798651	17.4	17.2
+	"Baltimore County, MD"	"24005"	"2009"	"2009"	132	801808	16.5	16.5
+	"Baltimore County, MD"	"24005"	"2010"	"2010"	131	805029	16.3	16.4
+	"Baltimore County, MD"	"24005"	"2011"	"2011"	122	809941	15.1	14.9
+	"Baltimore County, MD"	"24005"	"2012"	"2012"	161	817455	19.7	19.7
+	"Baltimore County, MD"	"24005"	"2013"	"2013"	155	823015	18.8	19.0
+	"Baltimore County, MD"	"24005"	"2014"	"2014"	192	826925	23.2	23.3
+	"Baltimore County, MD"	"24005"	"2015"	"2015"	248	831128	29.8	30.8
+	"Baltimore County, MD"	"24005"	"2016"	"2016"	390	831026	46.9	48.2
+	"Baltimore County, MD"	"24005"	"2017"	"2017"	430	832468	51.7	52.2
+	"Calvert County, MD"	"24009"	"2001"	"2001"	10	77218	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2006"	"2006"	11	87043	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2007"	"2007"	14	87445	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2009"	"2009"	13	88244	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2010"	"2010"	11	88737	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2011"	"2011"	16	89256	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2012"	"2012"	15	89628	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2013"	"2013"	19	90484	Unreliable	Unreliable
+	"Calvert County, MD"	"24009"	"2014"	"2014"	21	90613	23.2	26.3
+	"Calvert County, MD"	"24009"	"2015"	"2015"	24	90595	26.5	26.8
+	"Calvert County, MD"	"24009"	"2016"	"2016"	33	91251	36.2	39.3
+	"Calvert County, MD"	"24009"	"2017"	"2017"	39	91502	42.6	45.7
+	"Caroline County, MD"	"24011"	"2011"	"2011"	13	32985	Unreliable	Unreliable
+	"Caroline County, MD"	"24011"	"2014"	"2014"	11	32538	Unreliable	Unreliable
+	"Caroline County, MD"	"24011"	"2016"	"2016"	16	32850	Unreliable	Unreliable
+	"Caroline County, MD"	"24011"	"2017"	"2017"	15	33193	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"1999"	"1999"	10	149149	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2000"	"2000"	12	150897	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2001"	"2001"	17	154037	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2002"	"2002"	20	157930	12.7	12.5
+	"Carroll County, MD"	"24013"	"2003"	"2003"	29	161389	18.0	18.2
+	"Carroll County, MD"	"24013"	"2004"	"2004"	20	163915	12.2	11.8
+	"Carroll County, MD"	"24013"	"2005"	"2005"	22	165519	13.3	13.7
+	"Carroll County, MD"	"24013"	"2006"	"2006"	18	166950	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2007"	"2007"	22	167390	13.1	13.6
+	"Carroll County, MD"	"24013"	"2008"	"2008"	21	167433	12.5	14.4
+	"Carroll County, MD"	"24013"	"2009"	"2009"	24	167028	14.4	14.1
+	"Carroll County, MD"	"24013"	"2010"	"2010"	15	167134	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2011"	"2011"	17	167288	Unreliable	Unreliable
+	"Carroll County, MD"	"24013"	"2012"	"2012"	31	167217	18.5	19.8
+	"Carroll County, MD"	"24013"	"2013"	"2013"	37	167564	22.1	22.1
+	"Carroll County, MD"	"24013"	"2014"	"2014"	36	167830	21.5	20.6
+	"Carroll County, MD"	"24013"	"2015"	"2015"	43	167627	25.7	27.3
+	"Carroll County, MD"	"24013"	"2016"	"2016"	60	167656	35.8	40.2
+	"Carroll County, MD"	"24013"	"2017"	"2017"	61	167781	36.4	40.7
+	"Cecil County, MD"	"24015"	"1999"	"1999"	13	84591	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2002"	"2002"	14	90061	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2003"	"2003"	16	92444	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2004"	"2004"	18	94809	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2005"	"2005"	16	96836	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2006"	"2006"	28	98821	28.3	28.5
+	"Cecil County, MD"	"24015"	"2007"	"2007"	31	99628	31.1	31.9
+	"Cecil County, MD"	"24015"	"2008"	"2008"	15	100232	Unreliable	Unreliable
+	"Cecil County, MD"	"24015"	"2009"	"2009"	21	100816	20.8	20.6
+	"Cecil County, MD"	"24015"	"2010"	"2010"	29	101108	28.7	30.7
+	"Cecil County, MD"	"24015"	"2011"	"2011"	34	101694	33.4	35.0
+	"Cecil County, MD"	"24015"	"2012"	"2012"	30	101696	29.5	28.3
+	"Cecil County, MD"	"24015"	"2013"	"2013"	25	101913	24.5	23.6
+	"Cecil County, MD"	"24015"	"2014"	"2014"	36	102383	35.2	36.9
+	"Cecil County, MD"	"24015"	"2015"	"2015"	37	102382	36.1	35.8
+	"Cecil County, MD"	"24015"	"2016"	"2016"	48	102603	46.8	49.2
+	"Cecil County, MD"	"24015"	"2017"	"2017"	74	102746	72.0	74.6
+	"Charles County, MD"	"24017"	"2002"	"2002"	14	128079	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2003"	"2003"	13	131942	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2004"	"2004"	13	135601	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2007"	"2007"	14	142721	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2008"	"2008"	17	143783	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2009"	"2009"	15	144804	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2010"	"2010"	15	146551	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2011"	"2011"	20	149130	13.4	14.3
+	"Charles County, MD"	"24017"	"2012"	"2012"	16	150592	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2013"	"2013"	15	152864	Unreliable	Unreliable
+	"Charles County, MD"	"24017"	"2014"	"2014"	24	154747	15.5	14.7
+	"Charles County, MD"	"24017"	"2015"	"2015"	26	156118	16.7	17.5
+	"Charles County, MD"	"24017"	"2016"	"2016"	49	157705	31.1	30.4
+	"Charles County, MD"	"24017"	"2017"	"2017"	50	159700	31.3	31.1
+	"Dorchester County, MD"	"24019"	"2017"	"2017"	14	32162	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2001"	"2001"	12	202315	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2002"	"2002"	14	209194	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2003"	"2003"	15	213827	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2004"	"2004"	13	217776	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2005"	"2005"	20	221201	9.0	8.6
+	"Frederick County, MD"	"24021"	"2006"	"2006"	23	224211	10.3	10.2
+	"Frederick County, MD"	"24021"	"2007"	"2007"	19	227463	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2008"	"2008"	17	229286	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2009"	"2009"	23	230942	10.0	10.2
+	"Frederick County, MD"	"24021"	"2010"	"2010"	16	233385	Unreliable	Unreliable
+	"Frederick County, MD"	"24021"	"2011"	"2011"	30	236745	12.7	12.8
+	"Frederick County, MD"	"24021"	"2012"	"2012"	31	239582	12.9	13.3
+	"Frederick County, MD"	"24021"	"2013"	"2013"	37	241409	15.3	15.6
+	"Frederick County, MD"	"24021"	"2014"	"2014"	44	243675	18.1	18.4
+	"Frederick County, MD"	"24021"	"2015"	"2015"	38	245322	15.5	16.3
+	"Frederick County, MD"	"24021"	"2016"	"2016"	102	247591	41.2	43.3
+	"Frederick County, MD"	"24021"	"2017"	"2017"	85	252022	33.7	34.9
+	"Garrett County, MD"	"24023"	"2017"	"2017"	11	29233	Unreliable	Unreliable
+	"Harford County, MD"	"24025"	"1999"	"1999"	20	216408	9.2	9.3
+	"Harford County, MD"	"24025"	"2000"	"2000"	19	218590	Unreliable	Unreliable
+	"Harford County, MD"	"24025"	"2001"	"2001"	31	222753	13.9	13.5
+	"Harford County, MD"	"24025"	"2002"	"2002"	29	227369	12.8	12.6
+	"Harford County, MD"	"24025"	"2003"	"2003"	46	231411	19.9	20.2
+	"Harford County, MD"	"24025"	"2004"	"2004"	27	234849	11.5	11.2
+	"Harford County, MD"	"24025"	"2005"	"2005"	25	238402	10.5	10.5
+	"Harford County, MD"	"24025"	"2006"	"2006"	44	241163	18.2	17.8
+	"Harford County, MD"	"24025"	"2007"	"2007"	34	241634	14.1	14.2
+	"Harford County, MD"	"24025"	"2008"	"2008"	39	242779	16.1	16.8
+	"Harford County, MD"	"24025"	"2009"	"2009"	36	243685	14.8	15.6
+	"Harford County, MD"	"24025"	"2010"	"2010"	41	244826	16.7	17.6
+	"Harford County, MD"	"24025"	"2011"	"2011"	41	246489	16.6	16.8
+	"Harford County, MD"	"24025"	"2012"	"2012"	50	248622	20.1	19.1
+	"Harford County, MD"	"24025"	"2013"	"2013"	47	249215	18.9	20.4
+	"Harford County, MD"	"24025"	"2014"	"2014"	47	250105	18.8	18.6
+	"Harford County, MD"	"24025"	"2015"	"2015"	56	250290	22.4	23.1
+	"Harford County, MD"	"24025"	"2016"	"2016"	90	251032	35.9	37.7
+	"Harford County, MD"	"24025"	"2017"	"2017"	111	252160	44.0	46.9
+	"Howard County, MD"	"24027"	"1999"	"1999"	15	243007	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2000"	"2000"	16	247842	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2001"	"2001"	13	255211	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2002"	"2002"	14	259532	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2003"	"2003"	22	263186	8.4	9.0
+	"Howard County, MD"	"24027"	"2004"	"2004"	14	265919	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2005"	"2005"	14	268590	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2006"	"2006"	17	271793	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2007"	"2007"	21	275196	7.6	7.9
+	"Howard County, MD"	"24027"	"2008"	"2008"	17	278405	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2009"	"2009"	21	283061	7.4	6.9
+	"Howard County, MD"	"24027"	"2010"	"2010"	15	287085	Unreliable	Unreliable
+	"Howard County, MD"	"24027"	"2011"	"2011"	25	293142	8.5	8.7
+	"Howard County, MD"	"24027"	"2012"	"2012"	30	299430	10.0	9.9
+	"Howard County, MD"	"24027"	"2013"	"2013"	28	304580	9.2	9.3
+	"Howard County, MD"	"24027"	"2014"	"2014"	20	309284	6.5	6.5
+	"Howard County, MD"	"24027"	"2015"	"2015"	43	313414	13.7	13.8
+	"Howard County, MD"	"24027"	"2016"	"2016"	53	317233	16.7	17.3
+	"Howard County, MD"	"24027"	"2017"	"2017"	64	321113	19.9	20.4
+	"Montgomery County, MD"	"24031"	"1999"	"1999"	37	862350	4.3	4.2
+	"Montgomery County, MD"	"24031"	"2000"	"2000"	36	873341	4.1	3.9
+	"Montgomery County, MD"	"24031"	"2001"	"2001"	34	891764	3.8	3.7
+	"Montgomery County, MD"	"24031"	"2002"	"2002"	28	903140	3.1	3.0
+	"Montgomery County, MD"	"24031"	"2003"	"2003"	43	910498	4.7	4.5
+	"Montgomery County, MD"	"24031"	"2004"	"2004"	39	914991	4.3	4.4
+	"Montgomery County, MD"	"24031"	"2005"	"2005"	44	921531	4.8	4.7
+	"Montgomery County, MD"	"24031"	"2006"	"2006"	45	926492	4.9	4.6
+	"Montgomery County, MD"	"24031"	"2007"	"2007"	55	931694	5.9	5.7
+	"Montgomery County, MD"	"24031"	"2008"	"2008"	55	942748	5.8	5.5
+	"Montgomery County, MD"	"24031"	"2009"	"2009"	48	959013	5.0	4.9
+	"Montgomery County, MD"	"24031"	"2010"	"2010"	34	971777	3.5	3.4
+	"Montgomery County, MD"	"24031"	"2011"	"2011"	46	989794	4.6	4.4
+	"Montgomery County, MD"	"24031"	"2012"	"2012"	58	1004709	5.8	5.5
+	"Montgomery County, MD"	"24031"	"2013"	"2013"	56	1016677	5.5	5.5
+	"Montgomery County, MD"	"24031"	"2014"	"2014"	75	1030447	7.3	7.2
+	"Montgomery County, MD"	"24031"	"2015"	"2015"	95	1040116	9.1	9.1
+	"Montgomery County, MD"	"24031"	"2016"	"2016"	123	1043863	11.8	12.0
+	"Montgomery County, MD"	"24031"	"2017"	"2017"	132	1058810	12.5	12.4
+	"Prince George's County, MD"	"24033"	"1999"	"1999"	44	795048	5.5	5.3
+	"Prince George's County, MD"	"24033"	"2000"	"2000"	42	801515	5.2	5.1
+	"Prince George's County, MD"	"24033"	"2001"	"2001"	38	817360	4.6	4.4
+	"Prince George's County, MD"	"24033"	"2002"	"2002"	54	828893	6.5	6.4
+	"Prince George's County, MD"	"24033"	"2003"	"2003"	64	837648	7.6	7.8
+	"Prince George's County, MD"	"24033"	"2004"	"2004"	65	845950	7.7	7.4
+	"Prince George's County, MD"	"24033"	"2005"	"2005"	48	853271	5.6	5.3
+	"Prince George's County, MD"	"24033"	"2006"	"2006"	43	852097	5.0	4.9
+	"Prince George's County, MD"	"24033"	"2007"	"2007"	47	849916	5.5	5.4
+	"Prince George's County, MD"	"24033"	"2008"	"2008"	58	850167	6.8	6.6
+	"Prince George's County, MD"	"24033"	"2009"	"2009"	68	856161	7.9	7.5
+	"Prince George's County, MD"	"24033"	"2010"	"2010"	56	863420	6.5	6.2
+	"Prince George's County, MD"	"24033"	"2011"	"2011"	51	871233	5.9	5.5
+	"Prince George's County, MD"	"24033"	"2012"	"2012"	60	881138	6.8	6.7
+	"Prince George's County, MD"	"24033"	"2013"	"2013"	53	890081	6.0	5.6
+	"Prince George's County, MD"	"24033"	"2014"	"2014"	71	904430	7.9	7.7
+	"Prince George's County, MD"	"24033"	"2015"	"2015"	72	909535	7.9	7.5
+	"Prince George's County, MD"	"24033"	"2016"	"2016"	136	908049	15.0	14.0
+	"Prince George's County, MD"	"24033"	"2017"	"2017"	162	912756	17.7	16.3
+	"Queen Anne's County, MD"	"24035"	"2013"	"2013"	10	48517	Unreliable	Unreliable
+	"Queen Anne's County, MD"	"24035"	"2014"	"2014"	11	48804	Unreliable	Unreliable
+	"Queen Anne's County, MD"	"24035"	"2015"	"2015"	10	48904	Unreliable	Unreliable
+	"Queen Anne's County, MD"	"24035"	"2016"	"2016"	14	48929	Unreliable	Unreliable
+	"Queen Anne's County, MD"	"24035"	"2017"	"2017"	12	49770	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2005"	"2005"	12	96871	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2008"	"2008"	12	101921	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2010"	"2010"	15	105151	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2012"	"2012"	11	108987	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2013"	"2013"	12	109633	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2014"	"2014"	11	110382	Unreliable	Unreliable
+	"St. Mary's County, MD"	"24037"	"2015"	"2015"	24	111413	21.5	22.7
+	"St. Mary's County, MD"	"24037"	"2016"	"2016"	24	112587	21.3	21.6
+	"St. Mary's County, MD"	"24037"	"2017"	"2017"	41	112667	36.4	37.1
+	"Somerset County, MD"	"24039"	"2016"	"2016"	11	25928	Unreliable	Unreliable
+	"Talbot County, MD"	"24041"	"2016"	"2016"	11	37278	Unreliable	Unreliable
+	"Talbot County, MD"	"24041"	"2017"	"2017"	11	37103	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2001"	"2001"	10	133093	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2003"	"2003"	11	136872	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2004"	"2004"	14	139423	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2005"	"2005"	13	142084	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2006"	"2006"	21	144286	14.6	14.6
+	"Washington County, MD"	"24043"	"2007"	"2007"	20	146173	13.7	13.6
+	"Washington County, MD"	"24043"	"2008"	"2008"	21	146674	14.3	14.1
+	"Washington County, MD"	"24043"	"2009"	"2009"	16	146953	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2010"	"2010"	18	147430	Unreliable	Unreliable
+	"Washington County, MD"	"24043"	"2011"	"2011"	22	148203	14.8	14.3
+	"Washington County, MD"	"24043"	"2012"	"2012"	27	149180	18.1	18.4
+	"Washington County, MD"	"24043"	"2013"	"2013"	37	149588	24.7	24.9
+	"Washington County, MD"	"24043"	"2014"	"2014"	46	149573	30.8	31.0
+	"Washington County, MD"	"24043"	"2015"	"2015"	58	149585	38.8	40.7
+	"Washington County, MD"	"24043"	"2016"	"2016"	63	150292	41.9	42.2
+	"Washington County, MD"	"24043"	"2017"	"2017"	54	150578	35.9	39.4
+	"Wicomico County, MD"	"24045"	"2002"	"2002"	11	86679	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2003"	"2003"	10	88463	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2005"	"2005"	11	92508	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2006"	"2006"	16	94621	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2008"	"2008"	11	97111	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2009"	"2009"	16	98069	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2010"	"2010"	11	98733	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2011"	"2011"	13	99190	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2012"	"2012"	18	100647	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2013"	"2013"	11	100896	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2014"	"2014"	17	101539	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2015"	"2015"	10	102370	Unreliable	Unreliable
+	"Wicomico County, MD"	"24045"	"2016"	"2016"	36	102577	35.1	42.3
+	"Wicomico County, MD"	"24045"	"2017"	"2017"	34	102923	33.0	35.9
+	"Worcester County, MD"	"24047"	"2004"	"2004"	10	49994	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"2006"	"2006"	11	50678	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"2008"	"2008"	12	51196	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"2014"	"2014"	10	51675	Unreliable	Unreliable
+	"Worcester County, MD"	"24047"	"2015"	"2015"	21	51540	40.7	44.5
+	"Worcester County, MD"	"24047"	"2016"	"2016"	23	51444	44.7	57.2
+	"Worcester County, MD"	"24047"	"2017"	"2017"	18	51690	Unreliable	Unreliable
+	"Baltimore city, MD"	"24510"	"1999"	"1999"	334	657441	50.8	51.4
+	"Baltimore city, MD"	"24510"	"2000"	"2000"	305	651154	46.8	47.9
+	"Baltimore city, MD"	"24510"	"2001"	"2001"	276	640733	43.1	43.8
+	"Baltimore city, MD"	"24510"	"2002"	"2002"	303	634115	47.8	48.8
+	"Baltimore city, MD"	"24510"	"2003"	"2003"	286	629033	45.5	46.3
+	"Baltimore city, MD"	"24510"	"2004"	"2004"	258	624222	41.3	42.2
+	"Baltimore city, MD"	"24510"	"2005"	"2005"	234	621560	37.6	38.4
+	"Baltimore city, MD"	"24510"	"2006"	"2006"	258	621109	41.5	42.1
+	"Baltimore city, MD"	"24510"	"2007"	"2007"	262	620306	42.2	42.9
+	"Baltimore city, MD"	"24510"	"2008"	"2008"	167	620184	26.9	27.6
+	"Baltimore city, MD"	"24510"	"2009"	"2009"	210	620509	33.8	33.8
+	"Baltimore city, MD"	"24510"	"2010"	"2010"	150	620961	24.2	23.8
+	"Baltimore city, MD"	"24510"	"2011"	"2011"	145	619493	23.4	23.5
+	"Baltimore city, MD"	"24510"	"2012"	"2012"	195	621342	31.4	31.8
+	"Baltimore city, MD"	"24510"	"2013"	"2013"	211	622104	33.9	32.1
+	"Baltimore city, MD"	"24510"	"2014"	"2014"	271	622793	43.5	42.5
+	"Baltimore city, MD"	"24510"	"2015"	"2015"	334	621849	53.7	50.6
+	"Baltimore city, MD"	"24510"	"2016"	"2016"	520	614664	84.6	80.6
+	"Baltimore city, MD"	"24510"	"2017"	"2017"	570	611648	93.2	87.8
+"---"
+"Dataset: Multiple Cause of Death, 1999-2017"
+"Query Parameters:"
+"Title: deaths"
+"MCD - Drug/Alcohol Induced Causes: Drug-induced causes"
+"States: Maryland (24)"
+"UCD - Drug/Alcohol Induced Causes: Drug-induced causes"
+"Group By: County; Year"
+"Show Totals: False"
+"Show Zero Values: False"
+"Show Suppressed: False"
+"Standard Population: 2000 U.S. Std. Population"
+"Calculate Rates Per: 100,000"
+"Rate Options: Default intercensal populations for years 2001-2009 (except Infant Age Groups)"
+"---"
+"Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
+"---"
+"Query Date: Dec 11, 2019 3:28:37 PM"
+"---"
+"Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Multiple Cause of Death"
+"1999-2017 on CDC WONDER Online Database, released December, 2018. Data are from the Multiple Cause of Death Files, 1999-2017, as"
+"compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
+"at http://wonder.cdc.gov/mcd-icd10.html on Dec 11, 2019 3:28:37 PM"
+"---"
+Messages:
+"1. Rows with suppressed Deaths are hidden. Use Quick Options above to show suppressed rows."
+"---"
+Caveats:
+"1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2014-Revision."
+"2. Deaths and population estimates are reported separately for Baltimore City (FIPS code 24510) and Baltimore county (FIPS code"
+"24005)."
+"3. Data are Suppressed when the data meet the criteria for confidentiality constraints. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Assurance of Confidentiality."
+"4. Death rates are flagged as Unreliable when the rate is calculated with a numerator of 20 or less. More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Unreliable."
+"5. The populations used to calculate standard age-adjusted rates are documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#2000 Standard Population."
+"6. The method used to calculate age-adjusted rates is documented here: More information:"
+"http://wonder.cdc.gov/wonder/help/mcd.html#Age-Adjusted Rates."
+"7. Deaths for persons of unknown age are included in counts and crude rates, but are not included in age-adjusted rates."
+"8. The population figures for year 2017 are bridged-race estimates of the July 1 resident population, from the Vintage 2017"
+"postcensal series released by NCHS on June 27, 2018. The population figures for year 2016 are bridged-race estimates of the July"
+"1 resident population, from the Vintage 2016 postcensal series released by NCHS on June 26, 2017. The population figures for"
+"year 2015 are bridged-race estimates of the July 1 resident population, from the Vintage 2015 postcensal series released by NCHS"
+"on June 28, 2016. The population figures for year 2014 are bridged-race estimates of the July 1 resident population, from the"
+"Vintage 2014 postcensal series released by NCHS on June 30, 2015. The population figures for year 2013 are bridged-race"
+"estimates of the July 1 resident population, from the Vintage 2013 postcensal series released by NCHS on June 26, 2014. The"
+"population figures for year 2012 are bridged-race estimates of the July 1 resident population, from the Vintage 2012 postcensal"
+"series released by NCHS on June 13, 2013. Population figures for 2011 are bridged-race estimates of the July 1 resident"
+"population, from the county-level postcensal Vintage 2011 series released by NCHS on July 18, 2012. Population figures for 2010"
+"are April 1 Census counts. The population figures for years 2001 - 2009, are bridged-race estimates of the July 1 resident"
+"population, from the revised intercensal county-level 2000 - 2009 series released by NCHS on October 26, 2012. Population"
+"figures for 2000 are April 1 Census counts. Population figures for 1999 are from the 1990-1999 intercensal series of July 1"
+"estimates. Population figures for Infant Age Groups are the number of live births. <br/><b>Note:</b> Rates and population"
+"figures for years 2001 - 2009 differ slightly from previously published reports, due to use of the population estimates which"
+"were available at the time of release."
+"9. The population figures used in the calculation of death rates for the age group 'under 1 year' are the estimates of the"
+"resident population that is under one year of age. More information: http://wonder.cdc.gov/wonder/help/mcd.html#Age Group."

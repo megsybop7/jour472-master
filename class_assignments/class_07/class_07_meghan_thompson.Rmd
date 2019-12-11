@@ -144,9 +144,10 @@ ggplot(wv_pills_per_year) +
   labs(x="Year", y="Total pills", title="Total pills shipped to counties remain steady or gradually increase between 2006 and 2012", subtitle="Total pills per year shipped to Kanawha, Cabell, Mingo, Raleigh, Logan and Wood Counties", caption="Source:DEA ARCOS Database via Washington Post", fill="County") + 
   scale_x_continuous(breaks = c(2006, 2007, 2008, 2009, 2010, 2012)) + 
   scale_y_continuous(labels=comma) + 
-  facet_wrap(nrow=2, . ~ buyer_county)+
+  #facet_wrap(nrow=2, . ~ buyer_county)+
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  guides(fill="none")
+  guides(fill="none") +
+  geom
 
 
 
@@ -222,15 +223,8 @@ ggplot(combined_income_pills) +
 
 ```{r}
 
-pharmacies_annual <- total_pharmacies_state(state="MD", key=key)%>%
-  filter(buyer_county=="HARFORD") %>%
-  select(buyer_city, total_dosage_unit)
-
-ggplot(pharmacies_annual) + 
-  geom_bar(stat="identity", aes(buyer_city, total_dosage_unit), fill="forest green") + 
-  labs(x="Town", y="Total pills", title="BEL AIR RECEIVES MOST PILLS BETWEEN 2006 AND 2012", subtitle="Pills shipped to each town in Harford County", caption="Source: DEA ARCOS database, via WashingtonPost") + 
-  scale_y_continuous(labels = comma)+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+ggplot(baltimore_pills_deaths) +
+  geom_line(aes(x= year, y= age_adjusted_rate))
 
 
 ```

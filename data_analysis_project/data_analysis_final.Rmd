@@ -1,0 +1,186 @@
+---
+title: "final_markdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# LOAD PACKAGES 
+
+library(tidyverse)
+library(tidycensus)
+library(janitor)
+library(mapview)
+library(ggthemes)
+library(scales)
+library(arcos)
+library(stringr)
+library(ggrepel)
+library(corrr)
+
+options(scipen=999)
+
+```
+
+```{r}
+
+# In 2012, the vast majority of people who died from opioid use were white. 
+
+ggplot(pie_overdoses, aes(x = "", y = percent_of_total, fill = race)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  labs(title = "Opioid Overdose Deaths by Race", subtitle = "National Opioid Deaths in 2012", caption = "Source: CDC Wonder Database") +
+  coord_polar("y", start = 0)+
+  theme_void()
+
+```
+
+
+```{r}
+
+# Visualizing the relationshp between percent of a county's population that is black and deaths caused by the opioid crisis between 2006 and 2012.  
+
+ggplot(nat_black_deaths) + 
+  geom_point(aes(percent_black, age_adjusted_rate)) +
+  labs(x="pct_black", y = "death_rate") +
+  geom_text_repel(aes(percent_black, age_adjusted_rate, label= county), subset(MD_death_black, (county == "Baltimore city, MD"))) +
+  geom_smooth(aes(percent_black, age_adjusted_rate), method= 'lm', se = FALSE)
+
+# There is a weak, negative correlation between deaths caused by opioids and the percentage of a county's population who is black. Note the location of Baltimore in the scatterplot.  
+
+cor.test(nat_black_deaths$percent_black, nat_black_deaths$age_adjusted_rate)
+
+```
+
+```{r}
+
+# Mapping relationship between percent of a county's population that is black and the number of opioid related deaths in that county in Maryland. 
+
+ggplot(MD_death_black) + 
+  geom_point(aes(percent_black, age_adjusted_rate)) +
+  labs(x="percent_black", y = "Death Rate") + 
+  geom_text_repel(aes(percent_black, age_adjusted_rate, label= county)) +
+  geom_smooth(aes(percent_black, age_adjusted_rate), method= 'lm', se = FALSE)
+
+# Following the national trend, Prince George's County whose population is over sixty percent black had the second lowest opioid related deaths in the state. Charles County also followed this trend. However, Baltimore City had the highest opioid related deaths in the state despite their majority black population. 
+
+```
+
+
+```{r}
+
+# However, once the prescription pill epidemic began, Baltimore didn't receive that many pills relative to other counties with similar death rates between 2006 and 2012. 
+
+MD_geodata_shifted %>%
+  ggplot(aes(fill = pills_per_person, na.rm = TRUE)) +
+  labs(fill = "Pills Per Person", title = "Pills Per Person between 2006 and 2012 at the state leve", caption = "Source: Washington Post ARCOS Database") +
+  geom_sf(lwd = 0) +
+  scale_fill_viridis_c(option = "magma",labels = comma)  
+
+```
+
+```{r}
+
+# Mapping the relationship between deaths caused by opioids and the pills per person distributed in Maryland counties between 2006 and 2012. 
+
+ggplot(MD_DEATH_INCOME) + 
+  geom_point(aes(age_adjusted_rate, pills_per_person)) +
+  labs(x="Death Rate", y = "Pills Per Person") + 
+  geom_text_repel(aes(age_adjusted_rate, pills_per_person, label= county)) +
+  geom_smooth(aes(age_adjusted_rate, pills_per_person), method= 'lm', se = FALSE)
+
+# BaLtimore did not have similar numbers of pills per person to other counties in Maryland with similar death rates. 
+
+
+
+# Either Baltimore has more opioid addicts, users aren't consuming pills, or both. 
+
+
+# Considering the number of pills Baltimore was able to distribute per person between 2006 and 2012 and the percentage of their population that is black, their opioid related deaths should be significantly lower. So why is it so high? 
+
+
+```
+
+
+```{r}
+
+# Baltimore had the most opioid related deaths in Maryland between 2006 and 2012. However, Baltimore has had extremely high levels of opioid related deaths since 1997.  
+
+ggplot(deaths, aes(x=year_code, y=deaths, color= county, shape= county)) +
+  geom_point() + 
+  geom_smooth(se=FALSE, fullrange=TRUE,  size = .5)
+
+```
+
+
+```{r}
+
+ggplot(nat_black_pills) +
+  geom_point(aes(percent_black, pills_per_person)) + 
+  geom_label_repel(aes(percent_black, pills_per_person, label = NAME), subset(nat_black_pills, NAME == "Baltimore city, Maryland"))
+
+# Baltimore is not receiving more pills per person than average than cities with a similar percentage of black residents.
+
+```
+
+```{r}
+
+# Scatterplot indicates moderate negative correlation between median income in 2012 and Maryland counties' pill per person between 2006 and 2012.
+
+ggplot(MD_INCOME_PILLS) + 
+  geom_point(aes(med_income, pills_per_person)) +
+  labs(x="Median Income", y = "Pills Per Person") + 
+  scale_x_continuous(labels = comma) +
+  geom_text_repel(aes(med_income, pills_per_person, label=BUYER_COUNTY)) +
+   geom_smooth(aes(med_income, pills_per_person), method= 'lm', se = FALSE)
+
+view(MD_INCOME_PILLS)
+
+```
+
+
+```{r}
+
+# The graph indicates a nationwide trend involving a moderate, positive correlation between deaths caused by the opioid crisis and the percent of a county's population living in poverty. 
+
+ggplot(poverty_pills) + 
+  geom_point(aes(poverty_rate, age_adjusted_rate)) +
+  labs(x="percent_in_poverty", y = "death_rate") +
+  geom_smooth(aes(poverty_rate, age_adjusted_rate), method= 'lm', se = FALSE)
+
+```
+
+
+```{r}
+
+# Graphing the relationship between percentage of people in a Maryland county that live in poverty and deaths caused by the opioid crisis in that county. 
+
+ggplot(MD_poverty_death) + 
+  geom_point(aes(poverty_rate, age_adjusted_rate)) + 
+  labs(x = "percent_in_poverty", y = "death_rate") + 
+  geom_text_repel(aes(poverty_rate, age_adjusted_rate, label= county)) +
+  geom_smooth(aes(poverty_rate, age_adjusted_rate), method = 'lm', se = FALSE)
+
+
+```
+
+
+```{r}
+
+ggplot(nat_black_deaths) + 
+  geom_point(aes(percent_black, age_adjusted_rate)) +
+  labs(x="pct_black", y = "death_rate") +
+  geom_text_repel(aes(percent_black, age_adjusted_rate, label= county), subset(MD_death_black, (county == "Baltimore city, MD"))) +
+  geom_smooth(aes(percent_black, age_adjusted_rate), method= 'lm', se = FALSE)
+
+cor.test(nat_black_deaths$percent_black, nat_black_deaths$age_adjusted_rate)
+
+# But they are dying from opioids at a significantly higher rate than cities with similar percentage of black residents. Why might this be? 
+
+
+```
+
+
